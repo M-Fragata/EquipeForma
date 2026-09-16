@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { ShieldCheck, ArrowRight } from 'lucide-react';
+import { ShieldCheck } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatedText } from './AnimatedText';
@@ -40,7 +40,7 @@ export const Corporate: React.FC = () => {
         <div ref={cardRef} className="corporate-card gsap-card opacity-0">
           <div className="corporate-left">
             <div className="corporate-icon-wrapper">
-              <ShieldCheck size={36} className="text-tertiary" />
+              <ShieldCheck size={36} className="text-secondary" />
             </div>
             <div>
               <div className="corporate-title-wrapper">
@@ -69,10 +69,9 @@ export const Corporate: React.FC = () => {
             href="https://wa.me/5521975334017?text=Olá!%20Gostaria%20de%20saber%20como%20utilizar%20meu%20Gympass/TotalPass%20na%20Equipe%20Forma."
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-primary corporate-cta gsap-btn"
+            className="corporate-cta gsap-btn"
           >
             <span>Validar Meu Benefício</span>
-            <ArrowRight size={18} />
           </a>
         </div>
       </div>

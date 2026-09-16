@@ -164,6 +164,18 @@ img {
   color: var(--secondary-light);
 }
 
+.text-primary {
+  color: var(--primary);
+}
+
+.text-secondary {
+  color: var(--secondary);
+}
+
+.text-tertiary {
+  color: var(--tertiary-light);
+}
+
 /* Text Splitting Helper Classes */
 .split-line-wrapper {
   overflow: hidden;

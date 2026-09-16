@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Dumbbell, MessageCircle } from 'lucide-react';
+import { Dumbbell, MessageCircle, ShieldCheck } from 'lucide-react';
 import gsap from 'gsap';
 import { AnimatedText } from './AnimatedText';
 import './Hero.css';
@@ -60,9 +60,9 @@ export const Hero: React.FC = () => {
       <div className="container hero-content">
         {/* Gympass badge */}
         <div ref={badgeRef} className="hero-badge-wrapper opacity-0">
-          <div className="badge badge-tertiary hero-badge">
-            
-            <span>Aceitamos Gympass & TotalPass</span>
+          <div className="badge badge-secondary hero-badge">
+            <ShieldCheck size={16} className="text-secondary" />
+            <span>ACEITAMOS GYMPASS & TOTALPASS</span>
           </div>
         </div>
 
@@ -117,7 +117,7 @@ export const Hero: React.FC = () => {
             rel="noopener noreferrer"
             className="btn-outline hero-btn gsap-btn"
           >
-            <MessageCircle size={20} className="text-tertiary" />
+            <MessageCircle size={20} className="text-primary" />
             <span>Falar no WhatsApp</span>
           </a>
         </div>

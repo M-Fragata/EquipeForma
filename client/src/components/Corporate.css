@@ -9,13 +9,13 @@
     rgba(27, 30, 45, 0.9) 0%,
     rgba(18, 19, 24, 0.9) 100%
   );
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  border: 1px solid rgba(232, 117, 19, 0.35);
   border-radius: var(--radius-xl);
   padding: var(--space-xl);
   display: flex;
   flex-direction: column;
   gap: var(--space-lg);
-  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5), 0 0 25px rgba(232, 117, 19, 0.08);
   position: relative;
   overflow: hidden;
 }
@@ -44,8 +44,8 @@
   width: 60px;
   height: 60px;
   border-radius: var(--radius-lg);
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  background: rgba(232, 117, 19, 0.12);
+  border: 1px solid rgba(232, 117, 19, 0.3);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,9 +71,9 @@
   font-size: 0.75rem;
   font-weight: 700;
   text-transform: uppercase;
-  background: rgba(34, 197, 94, 0.15);
-  color: var(--tertiary-light);
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  background: rgba(232, 117, 19, 0.15);
+  color: var(--secondary-light);
+  border: 1px solid rgba(232, 117, 19, 0.35);
   padding: 0.15rem 0.5rem;
   border-radius: var(--radius-full);
 }
@@ -86,14 +86,25 @@
 
 .corporate-cta {
   white-space: nowrap;
-  background-color: var(--tertiary);
-  color: #0d0e13;
-  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35);
+  background-color: var(--secondary);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.75rem;
+  border-radius: var(--radius-md);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1rem;
+  box-shadow: 0 8px 24px rgba(232, 117, 19, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .corporate-cta:hover {
   filter: brightness(1.15);
-  box-shadow: 0 12px 28px rgba(34, 197, 94, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(232, 117, 19, 0.5);
+  color: #ffffff;
 }
 
 /* Light Mode for Gympass & TotalPass Corporate Card */
@@ -107,7 +118,7 @@ html.light .corporate-card {
     #ffffff 0%,
     #f8fafc 100%
   );
-  border: 1.5px solid rgba(22, 163, 74, 0.35);
+  border: 1.5px solid rgba(232, 117, 19, 0.35);
   box-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
 }
 
@@ -120,25 +131,26 @@ html.light .corporate-desc {
 }
 
 html.light .corporate-icon-wrapper {
-  background: rgba(34, 197, 94, 0.12);
-  border: 1px solid rgba(34, 197, 94, 0.3);
+  background: rgba(232, 117, 19, 0.12);
+  border: 1px solid rgba(232, 117, 19, 0.3);
 }
 
 html.light .corporate-verified-badge {
-  background: rgba(22, 163, 74, 0.12);
-  color: #15803d;
-  border-color: rgba(22, 163, 74, 0.35);
+  background: rgba(232, 117, 19, 0.12);
+  color: #c25e0a;
+  border-color: rgba(232, 117, 19, 0.35);
 }
 
 html.light .corporate-cta {
-  background-color: #16a34a;
+  background-color: var(--secondary);
   color: #ffffff;
-  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.3);
+  box-shadow: 0 8px 24px rgba(232, 117, 19, 0.3);
 }
 
 html.light .corporate-cta:hover {
-  background-color: #15803d;
-  box-shadow: 0 12px 28px rgba(22, 163, 74, 0.45);
+  background-color: #c25e0a;
+  color: #ffffff;
+  box-shadow: 0 12px 28px rgba(232, 117, 19, 0.45);
 }
 
 /* Mobile Responsive Corporate */
