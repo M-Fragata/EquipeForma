@@ -1,0 +1,150 @@
+:root {
+  /* Kinetic Obsidian Color Palette */
+  --bg-core: #0A0B10;
+  --bg-surface: #121318;
+  --bg-surface-elevated: #151722;
+  --bg-surface-hover: #1e2130;
+  --bg-surface-high: #242838;
+  --bg-card: rgba(21, 23, 34, 0.85);
+
+  --border-subtle: #1e2230;
+  --border-light: #232738;
+  --border-highlight: rgba(7, 127, 214, 0.35);
+
+  /* Brand Accents */
+  --primary: #077FD6;
+  --primary-glow: rgba(7, 127, 214, 0.35);
+  --primary-light: #a0caff;
+  --primary-dark: #003259;
+
+  --secondary: #E87513;
+  --secondary-glow: rgba(232, 117, 19, 0.35);
+  --secondary-light: #ffb689;
+  --secondary-dark: #471e00;
+
+  --tertiary: #22C55E;
+  --tertiary-glow: rgba(34, 197, 94, 0.35);
+  --tertiary-light: #4ae176;
+
+  /* Typography Colors */
+  --text-main: #F7F7F9;
+  --text-muted: #A1A6BB;
+  --text-dim: #60677D;
+
+  /* Fonts */
+  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2.5rem;
+  --space-2xl: 4rem;
+  --space-3xl: 6rem;
+
+  /* Radii */
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Layout */
+  --container-max: 1240px;
+  --header-height: 80px;
+
+  /* Shadows & Glows */
+  --shadow-card: 0 16px 36px -10px rgba(0, 0, 0, 0.5);
+  --glow-primary: 0 8px 28px rgba(7, 127, 214, 0.28);
+  --glow-secondary: 0 8px 30px rgba(232, 117, 19, 0.32);
+}
+
+/* Responsive Mobile Spacing - Eliminates excessive whitespace between sections */
+@media (max-width: 768px) {
+  :root {
+    --space-md: 0.85rem;
+    --space-lg: 1.25rem;
+    --space-xl: 1.75rem;
+    --space-2xl: 2.25rem;
+    --space-3xl: 2.75rem;
+    --header-height: 70px;
+  }
+}
+
+/* Light Mode Theme */
+:root.light {
+  --bg-core: #F5F7FB;
+  --bg-surface: #FFFFFF;
+  --bg-surface-elevated: #FFFFFF;
+  --bg-surface-hover: #EEF2F8;
+  --bg-surface-high: #E2E8F2;
+  --bg-card: rgba(255, 255, 255, 0.96);
+
+  --border-subtle: #E2E7F0;
+  --border-light: #D5DDE8;
+  --border-highlight: rgba(7, 127, 214, 0.4);
+
+  /* Brand Accents in Light Mode */
+  --primary: #0070C9;
+  --primary-glow: rgba(0, 112, 201, 0.25);
+  --primary-light: #00569e;
+  --primary-dark: #003a6b;
+
+  --secondary: #E87513;
+  --secondary-glow: rgba(232, 117, 19, 0.25);
+  --secondary-light: #c25e0a;
+  --secondary-dark: #471e00;
+
+  --tertiary: #16A34A;
+  --tertiary-glow: rgba(22, 163, 74, 0.25);
+  --tertiary-light: #15803d;
+
+  /* Typography Colors in Light Mode */
+  --text-main: #0E121B;
+  --text-muted: #4A5568;
+  --text-dim: #718096;
+
+  /* Soft Light Shadows */
+  --shadow-card: 0 12px 30px -6px rgba(15, 23, 42, 0.09), 0 4px 12px rgba(15, 23, 42, 0.04);
+  --glow-primary: 0 6px 20px rgba(0, 112, 201, 0.2);
+  --glow-secondary: 0 6px 22px rgba(232, 117, 19, 0.22);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not(.dark) {
+    --bg-core: #F5F7FB;
+    --bg-surface: #FFFFFF;
+    --bg-surface-elevated: #FFFFFF;
+    --bg-surface-hover: #EEF2F8;
+    --bg-surface-high: #E2E8F2;
+    --bg-card: rgba(255, 255, 255, 0.96);
+
+    --border-subtle: #E2E7F0;
+    --border-light: #D5DDE8;
+    --border-highlight: rgba(7, 127, 214, 0.4);
+
+    --primary: #0070C9;
+    --primary-glow: rgba(0, 112, 201, 0.25);
+    --primary-light: #00569e;
+    --primary-dark: #003a6b;
+
+    --secondary: #E87513;
+    --secondary-glow: rgba(232, 117, 19, 0.25);
+    --secondary-light: #c25e0a;
+    --secondary-dark: #471e00;
+
+    --tertiary: #16A34A;
+    --tertiary-glow: rgba(22, 163, 74, 0.25);
+    --tertiary-light: #15803d;
+
+    --text-main: #0E121B;
+    --text-muted: #4A5568;
+    --text-dim: #718096;
+
+    --shadow-card: 0 12px 30px -6px rgba(15, 23, 42, 0.09), 0 4px 12px rgba(15, 23, 42, 0.04);
+    --glow-primary: 0 6px 20px rgba(0, 112, 201, 0.2);
+    --glow-secondary: 0 6px 22px rgba(232, 117, 19, 0.22);
+  }
+}

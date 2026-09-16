@@ -1,0 +1,172 @@
+.corporate-section {
+  padding: var(--space-xl) 0;
+  background-color: var(--bg-surface);
+}
+
+.corporate-card {
+  background: linear-gradient(
+    135deg,
+    rgba(27, 30, 45, 0.9) 0%,
+    rgba(18, 19, 24, 0.9) 100%
+  );
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  border-radius: var(--radius-xl);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .corporate-card {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.corporate-left {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  max-width: 780px;
+}
+
+.corporate-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-lg);
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.corporate-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-xs);
+}
+
+.corporate-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.corporate-verified-badge {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--tertiary-light);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+  padding: 0.15rem 0.5rem;
+  border-radius: var(--radius-full);
+}
+
+.corporate-desc {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+.corporate-cta {
+  white-space: nowrap;
+  background-color: var(--tertiary);
+  color: #0d0e13;
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35);
+}
+
+.corporate-cta:hover {
+  filter: brightness(1.15);
+  box-shadow: 0 12px 28px rgba(34, 197, 94, 0.5);
+}
+
+/* Light Mode for Gympass & TotalPass Corporate Card */
+html.light .corporate-section {
+  background-color: var(--bg-core);
+}
+
+html.light .corporate-card {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #f8fafc 100%
+  );
+  border: 1.5px solid rgba(22, 163, 74, 0.35);
+  box-shadow: 0 16px 36px -12px rgba(15, 23, 42, 0.08), 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+html.light .corporate-title {
+  color: #0E121B;
+}
+
+html.light .corporate-desc {
+  color: #334155;
+}
+
+html.light .corporate-icon-wrapper {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+html.light .corporate-verified-badge {
+  background: rgba(22, 163, 74, 0.12);
+  color: #15803d;
+  border-color: rgba(22, 163, 74, 0.35);
+}
+
+html.light .corporate-cta {
+  background-color: #16a34a;
+  color: #ffffff;
+  box-shadow: 0 8px 24px rgba(22, 163, 74, 0.3);
+}
+
+html.light .corporate-cta:hover {
+  background-color: #15803d;
+  box-shadow: 0 12px 28px rgba(22, 163, 74, 0.45);
+}
+
+/* Mobile Responsive Corporate */
+@media (max-width: 768px) {
+  .corporate-section {
+    padding: 1.25rem 0;
+  }
+
+  .corporate-card {
+    padding: 1.25rem;
+    gap: 1rem;
+    border-radius: var(--radius-lg);
+  }
+
+  .corporate-title {
+    font-size: 1.2rem;
+  }
+
+  .corporate-desc {
+    font-size: 0.9rem;
+  }
+
+  .corporate-left {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .corporate-cta {
+    width: 100%;
+    justify-content: center;
+    padding: 0.85rem;
+    font-size: 0.95rem;
+  }
+}
+
+

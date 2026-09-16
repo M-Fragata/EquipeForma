@@ -1,0 +1,77 @@
+import React, { useRef, useEffect } from 'react';
+import { ShieldCheck, ArrowRight } from 'lucide-react';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { AnimatedText } from './AnimatedText';
+import './Corporate.css';
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const Corporate: React.FC = () => {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!cardRef.current) return;
+    const ctx = gsap.context(() => {
+      gsap.from(cardRef.current, {
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: 'top 85%',
+          toggleActions: 'play none none none',
+        },
+        scale: 0.94,
+        y: 35,
+        opacity: 0,
+        duration: 0.85,
+        ease: 'power3.out',
+      });
+    });
+
+    return () => ctx.revert();
+  }, []);
+
+  return (
+    <section className="corporate-section">
+      <div className="container">
+        <div ref={cardRef} className="corporate-card gsap-card">
+          <div className="corporate-left">
+            <div className="corporate-icon-wrapper">
+              <ShieldCheck size={36} className="text-tertiary" />
+            </div>
+            <div>
+              <div className="corporate-title-wrapper">
+                <AnimatedText
+                  as="h3"
+                  className="corporate-title"
+                  type="words,lines"
+                  animation="fade-up"
+                >
+                  Parceiro Oficial Gympass e TotalPass
+                </AnimatedText>
+                <span className="corporate-verified-badge">Validado</span>
+              </div>
+              <AnimatedText
+                as="p"
+                className="corporate-desc"
+                type="words,lines"
+                animation="stagger-blur"
+              >
+                Treine na Equipe Forma utilizando seu benefício corporativo com check-in ultra-rápido via QR Code na recepção. Sem taxas ocultas.
+              </AnimatedText>
+            </div>
+          </div>
+
+          <a
+            href="https://wa.me/5521975334017?text=Olá!%20Gostaria%20de%20saber%20como%20utilizar%20meu%20Gympass/TotalPass%20na%20Equipe%20Forma."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary corporate-cta gsap-btn"
+          >
+            <span>Validar Meu Benefício</span>
+            <ArrowRight size={18} />
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+};
