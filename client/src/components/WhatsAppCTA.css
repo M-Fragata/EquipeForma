@@ -5,6 +5,11 @@
   z-index: 99;
 }
 
+.whatsapp-floating-aside.opacity-0 {
+  opacity: 0;
+  transform: scale(0);
+}
+
 .whatsapp-btn {
   position: relative;
   display: flex;

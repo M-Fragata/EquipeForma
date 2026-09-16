@@ -8,22 +8,21 @@ export const WhatsAppCTA: React.FC = () => {
 
   useEffect(() => {
     if (!asideRef.current) return;
-    gsap.fromTo(
-      asideRef.current,
-      { scale: 0, opacity: 0 },
-      {
-        scale: 1,
-        opacity: 1,
-        duration: 0.6,
-        delay: 1.8,
-        ease: 'back.out(1.8)',
-        clearProps: 'transform,opacity',
-      }
-    );
+    gsap.to(asideRef.current, {
+      scale: 1,
+      opacity: 1,
+      duration: 0.6,
+      delay: 1.8,
+      ease: 'back.out(1.8)',
+      onComplete: () => {
+        asideRef.current?.classList.remove('opacity-0');
+        asideRef.current?.classList.add('opacity-1');
+      },
+    });
   }, []);
 
   return (
-    <aside ref={asideRef} className="whatsapp-floating-aside">
+    <aside ref={asideRef} className="whatsapp-floating-aside opacity-0">
       <a
         href="https://wa.me/5521975334017?text=Olá!%20Estou%20no%20site%20da%20Equipe%20Forma%20e%20gostaria%20de%20falar%20com%20um%20atendente."
         target="_blank"

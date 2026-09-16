@@ -33,7 +33,11 @@ export const Modalities: React.FC = () => {
           opacity: 1,
           duration: 0.8,
           ease: 'power3.out',
-          clearProps: 'all',
+          onComplete: () => {
+            const el = document.querySelector('.card-musculacao');
+            el?.classList.remove('opacity-0');
+            el?.classList.add('opacity-1');
+          },
         }
       );
 
@@ -56,7 +60,11 @@ export const Modalities: React.FC = () => {
           duration: 0.8,
           delay: isMobile ? 0.1 : 0.15,
           ease: 'power3.out',
-          clearProps: 'all',
+          onComplete: () => {
+            const el = document.querySelector('.card-jiujitsu');
+            el?.classList.remove('opacity-0');
+            el?.classList.add('opacity-1');
+          },
         }
       );
     }, gridRef);
@@ -96,7 +104,7 @@ export const Modalities: React.FC = () => {
 
         <div ref={gridRef} className="modalities-grid">
           {/* Card Musculação */}
-          <div className="modality-card card-musculacao gsap-card">
+          <div className="modality-card card-musculacao gsap-card opacity-0">
             <div className="modality-glow blue"></div>
             <div className="modality-content">
               <div className="modality-header">
@@ -109,7 +117,7 @@ export const Modalities: React.FC = () => {
                   type="words,lines"
                   animation="fade-up"
                 >
-                  Musculação Avançada
+                  Musculação
                 </AnimatedText>
               </div>
 
@@ -120,11 +128,11 @@ export const Modalities: React.FC = () => {
               <ul className="modality-features">
                 <li>
                   <CheckCircle2 size={18} className="feature-icon blue" />
-                  <span>Área de Pesos Livres Completa</span>
+                  <span>Área de Pesos Livres</span>
                 </li>
                 <li>
                   <CheckCircle2 size={18} className="feature-icon blue" />
-                  <span>Esteiras & Cárdio Pro</span>
+                  <span>Esteiras & Cárdio</span>
                 </li>
                 <li>
                   <CheckCircle2 size={18} className="feature-icon blue" />
@@ -132,7 +140,7 @@ export const Modalities: React.FC = () => {
                 </li>
                 <li>
                   <CheckCircle2 size={18} className="feature-icon blue" />
-                  <span>Professores em Sala</span>
+                  <span>Auxílio de Professores</span>
                 </li>
               </ul>
             </div>
@@ -148,7 +156,7 @@ export const Modalities: React.FC = () => {
           </div>
 
           {/* Card Jiu-Jitsu */}
-          <div className="modality-card card-jiujitsu gsap-card">
+          <div className="modality-card card-jiujitsu gsap-card opacity-0">
             <div className="modality-glow orange"></div>
             <div className="modality-content">
               <div className="modality-header">
@@ -161,7 +169,7 @@ export const Modalities: React.FC = () => {
                   type="words,lines"
                   animation="fade-up"
                 >
-                  Jiu-Jitsu de Elite
+                  Jiu-Jitsu
                 </AnimatedText>
               </div>
 
@@ -184,7 +192,7 @@ export const Modalities: React.FC = () => {
                 </li>
                 <li>
                   <CheckCircle2 size={18} className="feature-icon orange" />
-                  <span>Preparação Marcial & Competições</span>
+                  <span>Preparação Marcial</span>
                 </li>
               </ul>
             </div>

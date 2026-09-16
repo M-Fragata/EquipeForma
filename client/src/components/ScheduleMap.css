@@ -27,6 +27,10 @@
   transition: all 0.3s ease;
 }
 
+.info-card.opacity-0 {
+  opacity: 0;
+}
+
 .info-card:hover {
   border-color: var(--border-highlight);
 }

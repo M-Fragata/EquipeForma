@@ -18,11 +18,10 @@
   inset: 0;
   background: linear-gradient(
     180deg,
-    rgba(10, 11, 16, 0.75) 0%,
-    rgba(10, 11, 16, 0.9) 60%,
-    var(--bg-core) 100%
+    rgba(10, 11, 16, 0.35) 0%,
+    rgba(10, 11, 16, 0.48) 50%,
+    rgba(10, 11, 16, 0.88) 100%
   );
-  backdrop-filter: blur(2px);
   z-index: 1;
 }
 
@@ -64,6 +63,11 @@
   margin-bottom: var(--space-lg);
 }
 
+.hero-badge-wrapper.opacity-0 {
+  opacity: 0;
+  transform: scale(0.85);
+}
+
 .hero-badge {
   padding: 0.5rem 1.25rem;
   background: rgba(21, 23, 34, 0.85);
@@ -101,6 +105,7 @@
   line-height: 1.08;
   margin-bottom: var(--space-xs);
   letter-spacing: -0.03em;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
 }
 
 .hero-subtitle-gradient {
@@ -109,29 +114,25 @@
   line-height: 1.15;
   margin-bottom: var(--space-lg);
   letter-spacing: -0.025em;
-  background: linear-gradient(135deg, #077FD6 0%, #a0caff 40%, #E87513 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
+  /* Tipografia apenas - o gradiente é controlado pelo <GradientText /> (React Bits)
+     colors=["#077FD6","#E87513","#fcfcfc"] */
 }
 
-.hero-subtitle-gradient .word,
-.hero-subtitle-gradient .char,
-.hero-subtitle-gradient .line {
-  background: linear-gradient(135deg, #077FD6 0%, #a0caff 40%, #E87513 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
+/* GradientText inner precisa herdar tipografia do wrapper */
+.hero-subtitle-gradient > div {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
 }
 
 .hero-description {
   font-size: clamp(1.05rem, 1.5vw + 0.5rem, 1.25rem);
-  color: var(--text-muted);
+  color: #e2e8f0;
   max-width: 720px;
   line-height: 1.6;
   margin-bottom: var(--space-xl);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .hero-ctas {
@@ -140,6 +141,11 @@
   gap: var(--space-md);
   width: 100%;
   max-width: 480px;
+}
+
+.hero-ctas.opacity-0 {
+  opacity: 0;
+  transform: translateY(20px);
 }
 
 @media (min-width: 640px) {

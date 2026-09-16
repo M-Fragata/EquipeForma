@@ -33,7 +33,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     Component,
     {
       ref,
-      className,
+      className: `opacity-0 ${className}`.trim(),
       style,
     },
     children

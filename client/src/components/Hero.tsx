@@ -1,33 +1,53 @@
 import React, { useRef, useEffect } from 'react';
-import { Dumbbell, MessageCircle, ShieldCheck } from 'lucide-react';
+import { Dumbbell, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { AnimatedText } from './AnimatedText';
+import GradientText from './GradientText';
 import './Hero.css';
 
 export const Hero: React.FC = () => {
   const badgeRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
+  const subtitleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
       if (badgeRef.current) {
-        gsap.from(badgeRef.current, {
-          scale: 0.85,
-          opacity: 0,
+        gsap.to(badgeRef.current, {
+          scale: 1,
+          opacity: 1,
           duration: 0.55,
           delay: 0.05,
           ease: 'back.out(1.6)',
+          onComplete: () => {
+            badgeRef.current?.classList.remove('opacity-0');
+            badgeRef.current?.classList.add('opacity-1');
+          },
         });
       }
+      if (subtitleRef.current) {
+        gsap.fromTo(
+          subtitleRef.current,
+          { y: 28, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            delay: 0.32,
+            ease: 'power3.out',
+          }
+        );
+      }
       if (ctaRef.current) {
-        gsap.from(ctaRef.current.children, {
-          y: 20,
-          opacity: 0,
+        gsap.to(ctaRef.current, {
+          y: 0,
+          opacity: 1,
           duration: 0.55,
-          stagger: 0.12,
           delay: 0.75,
           ease: 'power2.out',
           onComplete: () => {
+            ctaRef.current?.classList.remove('opacity-0');
+            ctaRef.current?.classList.add('opacity-1');
             // Signal that Hero principal content animation is finished
             window.dispatchEvent(new CustomEvent('hero-animation-complete'));
           },
@@ -54,11 +74,10 @@ export const Hero: React.FC = () => {
 
       <div className="container hero-content">
         {/* Gympass badge */}
-        <div ref={badgeRef} className="hero-badge-wrapper">
+        <div ref={badgeRef} className="hero-badge-wrapper opacity-0">
           <div className="badge badge-tertiary hero-badge">
-            <ShieldCheck size={16} />
+            
             <span>Aceitamos Gympass & TotalPass</span>
-            <span className="pulse-dot"></span>
           </div>
         </div>
 
@@ -75,18 +94,20 @@ export const Hero: React.FC = () => {
           Equipe Forma Academia
         </AnimatedText>
 
-        {/* Animated Accent Headline with Reveal Mask */}
-        <AnimatedText
-          as="h2"
-          className="hero-subtitle-gradient gradient-text-accent"
-          type="words,lines"
-          animation="fade-up"
-          delay={0.3}
-          stagger={0.04}
-          scrollTrigger={false}
-        >
-          Seu treino, sua evolução diária.
-        </AnimatedText>
+        {/* GradientText React Bits - config exata da imagem: 8s / vertical / yoyo off */}
+        <div ref={subtitleRef} style={{ opacity: 0 }}>
+          <GradientText
+            colors={['#077FD6', '#E87513', '#fcfcfc']}
+            animationSpeed={3}
+            direction="vertical"
+            yoyo={true}
+            pauseOnHover={false}
+            showBorder={false}
+            className="hero-subtitle-gradient"
+          >
+            Seu treino, sua evolução diária.
+          </GradientText>
+        </div>
 
         {/* Paragraph with Split Lines / Words */}
         <AnimatedText
@@ -103,7 +124,7 @@ export const Hero: React.FC = () => {
         </AnimatedText>
 
         {/* CTA Buttons */}
-        <div ref={ctaRef} className="hero-ctas">
+        <div ref={ctaRef} className="hero-ctas opacity-0">
           <a href="#planos" className="btn-primary hero-btn gsap-btn">
             <Dumbbell size={20} />
             <span>Conhecer Nossos Planos</span>

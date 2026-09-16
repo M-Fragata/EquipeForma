@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Dumbbell, Sun, Moon } from 'lucide-react';
 import gsap from 'gsap';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 import './Navbar.css';
 
 import logo from "../../public/logoforma.png"
@@ -37,8 +37,9 @@ export const Navbar: React.FC = () => {
         opacity: 1,
         duration: 0.65,
         ease: 'power3.out',
-        clearProps: 'transform,opacity',
         onComplete: () => {
+          headerRef.current?.classList.remove('opacity-0');
+          headerRef.current?.classList.add('opacity-1');
           // Signal that Header animation has finished, now Metrics can animate
           window.dispatchEvent(new CustomEvent('header-animation-complete'));
         },
@@ -55,7 +56,6 @@ export const Navbar: React.FC = () => {
             stagger: 0.06,
             delay: 0.15,
             ease: 'power2.out',
-            clearProps: 'transform,opacity',
           }
         );
       }
@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
   const logoUrl = logo;
 
   return (
-    <header ref={headerRef} className={`navbar-header ${scrolled ? 'scrolled' : ''}`}>
+    <header ref={headerRef} className={`navbar-header opacity-0 ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <a href="#inicio" className="navbar-brand">
           <img src={logoUrl} alt="Equipe Forma Academia" className="navbar-logo" />

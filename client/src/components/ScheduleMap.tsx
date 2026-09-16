@@ -3,19 +3,16 @@ import { Clock, MapPin, Navigation, ShieldCheck, Sun, Moon } from 'lucide-react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatedText } from './AnimatedText';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../hooks/useTheme';
 import './ScheduleMap.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const ScheduleMap: React.FC = () => {
   const { theme } = useTheme();
-  const [darkMap, setDarkMap] = useState(theme === 'dark');
+  const [darkMapOverride, setDarkMapOverride] = useState<boolean | null>(null);
+  const darkMap = darkMapOverride ?? theme === 'dark';
   const containerRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setDarkMap(theme === 'dark');
-  }, [theme]);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -40,7 +37,11 @@ export const ScheduleMap: React.FC = () => {
           opacity: 1,
           duration: 0.8,
           ease: 'power3.out',
-          clearProps: 'all',
+          onComplete: () => {
+            const el = document.querySelector('.schedule-card');
+            el?.classList.remove('opacity-0');
+            el?.classList.add('opacity-1');
+          },
         }
       );
 
@@ -63,7 +64,11 @@ export const ScheduleMap: React.FC = () => {
           duration: 0.8,
           delay: isMobile ? 0.1 : 0.15,
           ease: 'power3.out',
-          clearProps: 'all',
+          onComplete: () => {
+            const el = document.querySelector('.map-card');
+            el?.classList.remove('opacity-0');
+            el?.classList.add('opacity-1');
+          },
         }
       );
     }, containerRef);
@@ -80,7 +85,7 @@ export const ScheduleMap: React.FC = () => {
       <div className="container">
         <div ref={containerRef} className="schedule-map-grid">
           {/* Card Horários */}
-          <div className="info-card schedule-card gsap-card">
+          <div className="info-card schedule-card gsap-card opacity-0">
             <div>
               <div className="card-header">
                 <div className="card-icon-wrapper blue">
@@ -134,7 +139,7 @@ export const ScheduleMap: React.FC = () => {
           </div>
 
           {/* Card Localização com Mapa 100% Interativo Embutido */}
-          <div id="localizacao" className="info-card map-card gsap-card">
+          <div id="localizacao" className="info-card map-card gsap-card opacity-0">
             <div>
               <div className="card-header justify-between">
                 <div className="flex-header">
@@ -152,7 +157,7 @@ export const ScheduleMap: React.FC = () => {
                 </div>
                 <div className="map-badge-group">
                   <button
-                    onClick={() => setDarkMap(!darkMap)}
+                    onClick={() => setDarkMapOverride(!darkMap)}
                     className="map-theme-btn"
                     title="Alternar tema do mapa"
                   >

@@ -13,17 +13,21 @@ export const Corporate: React.FC = () => {
   useEffect(() => {
     if (!cardRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from(cardRef.current, {
+      gsap.to(cardRef.current, {
         scrollTrigger: {
           trigger: cardRef.current,
           start: 'top 85%',
           toggleActions: 'play none none none',
         },
-        scale: 0.94,
-        y: 35,
-        opacity: 0,
+        scale: 1,
+        y: 0,
+        opacity: 1,
         duration: 0.85,
         ease: 'power3.out',
+        onComplete: () => {
+          cardRef.current?.classList.remove('opacity-0');
+          cardRef.current?.classList.add('opacity-1');
+        },
       });
     });
 
@@ -33,7 +37,7 @@ export const Corporate: React.FC = () => {
   return (
     <section className="corporate-section">
       <div className="container">
-        <div ref={cardRef} className="corporate-card gsap-card">
+        <div ref={cardRef} className="corporate-card gsap-card opacity-0">
           <div className="corporate-left">
             <div className="corporate-icon-wrapper">
               <ShieldCheck size={36} className="text-tertiary" />

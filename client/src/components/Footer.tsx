@@ -14,16 +14,20 @@ export const Footer: React.FC = () => {
   useEffect(() => {
     if (!bannerRef.current) return;
     const ctx = gsap.context(() => {
-      gsap.from(bannerRef.current, {
+      gsap.to(bannerRef.current, {
         scrollTrigger: {
           trigger: bannerRef.current,
           start: 'top 85%',
           toggleActions: 'play none none none',
         },
-        scale: 0.94,
-        opacity: 0,
+        scale: 1,
+        opacity: 1,
         duration: 0.8,
         ease: 'power3.out',
+        onComplete: () => {
+          bannerRef.current?.classList.remove('opacity-0');
+          bannerRef.current?.classList.add('opacity-1');
+        },
       });
     }, bannerRef);
 
@@ -37,7 +41,7 @@ export const Footer: React.FC = () => {
       <span id="contato" className="sr-only" aria-hidden="true" />
       {/* Intermediate Conversion Banner */}
       <div className="container">
-        <div ref={bannerRef} className="conversion-banner gsap-card">
+        <div ref={bannerRef} className="conversion-banner gsap-card opacity-0">
           <div className="banner-text">
             <div className="flex items-center gap-2 mb-2">
               <img src={logoUrl} alt="Logo" className="banner-logo" />

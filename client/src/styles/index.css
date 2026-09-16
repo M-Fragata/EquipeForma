@@ -185,7 +185,9 @@ img {
   will-change: transform, opacity;
 }
 
-/* Kinetic Shimmer & Gradient Text */
+/* Kinetic Shimmer & Gradient Text - gradient is painted once on the parent
+   so SplitType word/char/line spans remain transparent and reveal the
+   continuous phrase gradient instead of a per-word gradient */
 .gradient-text-accent {
   background: linear-gradient(135deg, #077FD6 0%, #a0caff 45%, #E87513 100%);
   -webkit-background-clip: text;
@@ -196,17 +198,19 @@ img {
 
 .gradient-text-accent .word,
 .gradient-text-accent .char,
-.gradient-text-accent .line {
-  background: linear-gradient(135deg, #077FD6 0%, #a0caff 45%, #E87513 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.gradient-text-accent .line,
+.gradient-text-accent .split-word,
+.gradient-text-accent .split-char,
+.gradient-text-accent .split-line {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
   display: inline-block;
 }
 
-.gradient-text-primary,
-.gradient-text-primary .word,
-.gradient-text-primary .char {
+.gradient-text-primary {
   background: linear-gradient(135deg, #a0caff 0%, #077FD6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -214,13 +218,39 @@ img {
   display: inline-block;
 }
 
-.gradient-text-orange,
-.gradient-text-orange .word,
-.gradient-text-orange .char {
+.gradient-text-primary .word,
+.gradient-text-primary .char,
+.gradient-text-primary .line,
+.gradient-text-primary .split-word,
+.gradient-text-primary .split-char,
+.gradient-text-primary .split-line {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+  display: inline-block;
+}
+
+.gradient-text-orange {
   background: linear-gradient(135deg, #ffb689 0%, #E87513 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
+}
+
+.gradient-text-orange .word,
+.gradient-text-orange .char,
+.gradient-text-orange .line,
+.gradient-text-orange .split-word,
+.gradient-text-orange .split-char,
+.gradient-text-orange .split-line {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
   display: inline-block;
 }
 
@@ -259,6 +289,15 @@ img {
   will-change: transform, opacity;
 }
 
+/* Animation FOAC Prevention Utilities */
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-1 {
+  opacity: 1 !important;
+}
+
 /* Light Theme Component Overrides */
 html.light {
   color-scheme: light;
@@ -267,33 +306,62 @@ html.light {
 html.light .hero-bg-overlay {
   background: linear-gradient(
     180deg,
-    rgba(245, 247, 251, 0.82) 0%,
-    rgba(245, 247, 251, 0.94) 60%,
-    var(--bg-core) 100%
+    rgba(245, 247, 251, 0.35) 0%,
+    rgba(245, 247, 251, 0.48) 50%,
+    rgba(245, 247, 251, 0.90) 100%
   );
 }
 
 html.light .hero-title {
   color: #0E121B;
+  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
 }
 
-html.light .hero-subtitle-gradient,
+html.light .hero-description {
+  color: #1E293B;
+  font-weight: 500;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.9);
+}
+
+html.light .hero-subtitle-gradient {
+  background: none;
+  -webkit-background-clip: initial;
+  background-clip: initial;
+  color: var(--primary);
+  -webkit-text-fill-color: var(--primary);
+}
+
 html.light .hero-subtitle-gradient .word,
 html.light .hero-subtitle-gradient .char,
-html.light .hero-subtitle-gradient .line {
-  background: linear-gradient(135deg, #00569e 0%, #0070C9 40%, #C25E0A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: #0070C9;
+html.light .hero-subtitle-gradient .line,
+html.light .hero-subtitle-gradient .split-word,
+html.light .hero-subtitle-gradient .split-char,
+html.light .hero-subtitle-gradient .split-line {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: var(--primary);
+  color: var(--primary);
 }
 
-html.light .gradient-text-accent,
-html.light .gradient-text-accent .word,
-html.light .gradient-text-accent .char,
-html.light .gradient-text-accent .line {
+html.light .gradient-text-accent {
   background: linear-gradient(135deg, #00569e 0%, #0070C9 40%, #C25E0A 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+html.light .gradient-text-accent .word,
+html.light .gradient-text-accent .char,
+html.light .gradient-text-accent .line,
+html.light .gradient-text-accent .split-word,
+html.light .gradient-text-accent .split-char,
+html.light .gradient-text-accent .split-line {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
 }
 
 html.light .btn-outline {

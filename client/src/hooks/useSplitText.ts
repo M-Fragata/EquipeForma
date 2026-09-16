@@ -65,32 +65,45 @@ export function useSplitText<T extends HTMLElement = HTMLHeadingElement>(
           });
         }
 
-        const animConfig: gsap.TweenVars = {
+        // Release initial opacity-0 on parent now that child targets are ready to animate
+        el.classList.remove('opacity-0');
+
+        let initialVars: gsap.TweenVars = { opacity: 0 };
+        const toVars: gsap.TweenVars = {
           ease: 'power3.out',
           duration,
           delay,
           stagger,
+          opacity: 1,
+          clearProps: 'transform',
+          onComplete: () => {
+            el.classList.add('opacity-1');
+            gsap.set(targets, { opacity: 1 });
+          },
         };
 
         if (animation === 'fade-up') {
-          animConfig.y = 35;
-          animConfig.opacity = 0;
-          animConfig.rotateX = -10;
+          initialVars.y = 35;
+          initialVars.rotateX = -10;
+          toVars.y = 0;
+          toVars.rotateX = 0;
         } else if (animation === 'reveal-mask') {
-          animConfig.yPercent = 105;
-          animConfig.opacity = 0;
+          initialVars.yPercent = 105;
+          toVars.yPercent = 0;
         } else if (animation === 'stagger-blur') {
-          animConfig.y = 20;
-          animConfig.opacity = 0;
-          animConfig.filter = 'blur(6px)';
+          initialVars.y = 20;
+          initialVars.filter = 'blur(6px)';
+          toVars.y = 0;
+          toVars.filter = 'blur(0px)';
         } else if (animation === 'wave') {
-          animConfig.y = 25;
-          animConfig.opacity = 0;
-          animConfig.scale = 0.95;
+          initialVars.y = 25;
+          initialVars.scale = 0.95;
+          toVars.y = 0;
+          toVars.scale = 1;
         }
 
         if (scrollTrigger) {
-          animConfig.scrollTrigger =
+          toVars.scrollTrigger =
             typeof scrollTrigger === 'object'
               ? scrollTrigger
               : {
@@ -100,12 +113,7 @@ export function useSplitText<T extends HTMLElement = HTMLHeadingElement>(
                 };
         }
 
-        animConfig.clearProps = 'transform';
-        animConfig.onComplete = () => {
-          gsap.set(targets, { opacity: 1 });
-        };
-
-        gsap.from(targets, animConfig);
+        gsap.fromTo(targets, initialVars, toVars);
       }, el);
     }, 60);
 

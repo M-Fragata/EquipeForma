@@ -18,23 +18,24 @@ export const Plans: React.FC = () => {
     }, 150);
 
     const ctx = gsap.context(() => {
-      gsap.fromTo(
-        '.plan-card',
-        { y: 50, opacity: 0 },
-        {
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: 'top 92%',
-            toggleActions: 'play none none none',
-          },
-          y: 0,
-          opacity: 1,
-          stagger: 0.12,
-          duration: 0.8,
-          ease: 'power3.out',
-          clearProps: 'opacity,transform',
-        }
-      );
+      gsap.to('.plan-card', {
+        scrollTrigger: {
+          trigger: gridRef.current,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+        y: 0,
+        opacity: 1,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power3.out',
+        onComplete: () => {
+          document.querySelectorAll('.plan-card').forEach((el) => {
+            el.classList.remove('opacity-0');
+            el.classList.add('opacity-1');
+          });
+        },
+      });
     }, gridRef);
 
     return () => {
@@ -69,7 +70,7 @@ export const Plans: React.FC = () => {
 
         <div ref={gridRef} className="plans-grid">
           {/* Plano Musculação */}
-          <div className="plan-card gsap-card">
+          <div className="plan-card gsap-card opacity-0">
             <div>
               <div className="plan-card-header">
                 <span className="badge badge-primary">Força & Cárdio</span>
@@ -116,7 +117,7 @@ export const Plans: React.FC = () => {
             </div>
 
             <a
-              href="https://wa.me/5521975334017?text=Olá!%20Desejo%20me%20matricular%20no%20Plano%20Musculação."
+              href="https://wa.me/5521975334017?text=Olá!%20Gostaria%20de%20me%20matricular%20no%20Plano%20Musculação."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline plan-cta gsap-btn"
@@ -126,7 +127,7 @@ export const Plans: React.FC = () => {
           </div>
 
           {/* Plano Combo (Destaque) */}
-          <div className="plan-card plan-featured gsap-card">
+          <div className="plan-card plan-featured gsap-card opacity-0">
             <div className="featured-badge">
               <Star size={13} fill="#ffffff" />
               <span>Custo-Benefício</span>
@@ -173,7 +174,7 @@ export const Plans: React.FC = () => {
                   <div className="check-bullet orange">
                     <Check size={14} />
                   </div>
-                  <span> livres aos sábados (Open Mat)</span>
+                  <span>Treinos livres aos sábados (Open Mat)</span>
                 </li>
                 <li className="benefit-highlight">
                   <div className="check-bullet green">
@@ -195,7 +196,7 @@ export const Plans: React.FC = () => {
           </div>
 
           {/* Plano Jiu-Jitsu */}
-          <div className="plan-card gsap-card">
+          <div className="plan-card gsap-card opacity-0">
             <div>
               <div className="plan-card-header">
                 <span className="badge badge-primary">Arte Suave</span>

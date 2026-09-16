@@ -26,7 +26,12 @@ export const Metrics: React.FC = () => {
         duration: 0.55,
         stagger: 0.08,
         ease: 'power2.out',
-        clearProps: 'all',
+        onComplete: () => {
+          document.querySelectorAll('.metric-card').forEach((el) => {
+            el.classList.remove('opacity-0');
+            el.classList.add('opacity-1');
+          });
+        },
       });
     };
 
@@ -55,19 +60,19 @@ export const Metrics: React.FC = () => {
 
   const metrics = [
     {
-      value: '+1.500',
+      value: '+500',
       label: 'Alunos Ativos',
       icon: <Users className="metric-icon primary" size={24} />,
       highlight: true,
     },
     {
       value: 'Tatame Oficial',
-      label: 'Área Olímpica Homologada',
+      label: 'Área Ampla',
       icon: <Award className="metric-icon secondary" size={24} />,
     },
     {
       value: 'Biomecânica',
-      label: 'Carga & Ergonomia Pro',
+      label: 'Carga e Ergonomia',
       icon: <Cpu className="metric-icon primary" size={24} />,
     },
     {
@@ -82,7 +87,7 @@ export const Metrics: React.FC = () => {
       <div className="container">
         <div className="metrics-grid">
           {metrics.map((item, idx) => (
-            <div key={idx} className="metric-card">
+            <div key={idx} className="metric-card opacity-0">
               <div className="metric-header">
                 {item.icon}
                 <span className={`metric-value ${item.highlight ? 'highlight' : ''}`}>

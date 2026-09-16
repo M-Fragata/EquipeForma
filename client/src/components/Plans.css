@@ -67,6 +67,10 @@
   position: relative;
 }
 
+.plan-card.opacity-0 {
+  opacity: 0;
+}
+
 .plan-card:hover {
   /*background: var(--bg-surface-hover);*/
   border-color: var(--border-highlight);

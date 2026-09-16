@@ -23,6 +23,11 @@
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7);
 }
 
+.conversion-banner.opacity-0 {
+  opacity: 0;
+  transform: scale(0.94);
+}
+
 @media (min-width: 992px) {
   .conversion-banner {
     flex-direction: row;
@@ -39,6 +44,8 @@
   width: 38px;
   object-fit: cover;
   border-radius: 50%;
+  background: #000000;
+  padding: 2px;
 }
 
 .banner-brand {
@@ -112,6 +119,8 @@
   width: 42px;
   object-fit: cover;
   border-radius: 50%;
+  background: #000000;
+  padding: 2px;
 }
 
 .footer-brand-title {

@@ -13,6 +13,11 @@
   border-bottom: 1px solid transparent;
 }
 
+.navbar-header.opacity-0 {
+  opacity: 0;
+  transform: translateY(-90px);
+}
+
 .navbar-header.scrolled {
   background: rgba(18, 19, 24, 0.95);
   border-bottom-color: var(--border-light);
@@ -36,15 +41,17 @@
   width: 48px;
   object-fit: cover;
   border-radius: 50%;
+  background: #000000;
+  padding: 2px;
 }
 
 .navbar-title {
-  font-family: var(--font-heading);
+  font-family: var(--secondary);
   font-weight: 800;
   font-size: 1.25rem;
   letter-spacing: -0.01em;
   text-transform: uppercase;
-  color: var(--text-main);
+  color: var(--secondary);
 }
 
 .navbar-nav {
@@ -202,7 +209,7 @@ html.light .navbar-header.scrolled {
 }
 
 html.light .navbar-title {
-  color: #0E121B;
+  color: var(--secondary);
 }
 
 html.light .navbar-link {
