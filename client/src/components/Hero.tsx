@@ -61,8 +61,7 @@ export const Hero: React.FC = () => {
         {/* Gympass badge */}
         <div ref={badgeRef} className="hero-badge-wrapper opacity-0">
           <div className="badge badge-secondary hero-badge">
-            <ShieldCheck size={16} className="text-secondary" />
-            <span>ACEITAMOS GYMPASS & TOTALPASS</span>
+            <span>ACEITAMOS GYMPASS E TOTALPASS</span>
           </div>
         </div>
 
