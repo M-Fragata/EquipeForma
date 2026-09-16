@@ -117,7 +117,7 @@ export const Hero: React.FC = () => {
             rel="noopener noreferrer"
             className="btn-outline hero-btn gsap-btn"
           >
-            <MessageCircle size={20} className="text-secondary" />
+            <MessageCircle size={20} className="text-tertiary" />
             <span>Falar no WhatsApp</span>
           </a>
         </div>

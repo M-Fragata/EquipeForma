@@ -306,34 +306,33 @@ html.light {
 html.light .hero-bg-overlay {
   background: linear-gradient(
     180deg,
-    rgba(245, 247, 251, 0.35) 0%,
-    rgba(245, 247, 251, 0.48) 50%,
-    rgba(245, 247, 251, 0.90) 100%
+    rgba(10, 11, 16, 0.35) 0%,
+    rgba(10, 11, 16, 0.48) 50%,
+    rgba(10, 11, 16, 0.88) 100%
   );
 }
 
-html.light .hero-title {
-  color: #0E121B;
-  text-shadow: 0 2px 12px rgba(255, 255, 255, 0.85);
+html.light .hero-section .hero-title {
+  color: #fcfcfc;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.75);
 }
 
-html.light .hero-description {
-  color: #1E293B;
-  font-weight: 500;
-  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.9);
+html.light .hero-section .hero-description {
+  color: #e2e8f0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
-html.light .hero-subtitle-gradient {
-  color: var(--secondary);
+html.light .hero-section .btn-outline {
+  background-color: rgba(35, 39, 56, 0.8);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #fcfcfc;
+  box-shadow: none;
 }
 
-html.light .hero-subtitle-gradient .word,
-html.light .hero-subtitle-gradient .char,
-html.light .hero-subtitle-gradient .line,
-html.light .hero-subtitle-gradient .split-word,
-html.light .hero-subtitle-gradient .split-char,
-html.light .hero-subtitle-gradient .split-line {
-  color: var(--secondary);
+html.light .hero-section .btn-outline:hover {
+  background-color: rgba(45, 50, 72, 0.95);
+  border-color: var(--primary);
+  color: #ffffff;
 }
 
 html.light .gradient-text-accent {
