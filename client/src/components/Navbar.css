@@ -45,13 +45,29 @@
   padding: 2px;
 }
 
-.navbar-title {
-  font-family: var(--secondary);
+.navbar-title-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.9;
+  gap: 1px;
+}
+
+.navbar-title-forma,
+.navbar-title-fitness {
+  font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 1.25rem;
-  letter-spacing: -0.01em;
+  font-size: 1.18rem;
+  letter-spacing: -0.02em;
   text-transform: uppercase;
+  line-height: 1;
+}
+
+.navbar-title-forma {
   color: var(--secondary);
+}
+
+.navbar-title-fitness {
+  color: var(--primary);
 }
 
 .navbar-nav {
@@ -230,8 +246,12 @@ html.light .navbar-header.scrolled {
   box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
 }
 
-html.light .navbar-title {
+html.light .navbar-title-forma {
   color: var(--secondary);
+}
+
+html.light .navbar-title-fitness {
+  color: var(--primary);
 }
 
 html.light .navbar-link {
@@ -240,6 +260,16 @@ html.light .navbar-link {
 
 html.light .navbar-link:hover {
   color: var(--primary);
+}
+
+html.light .navbar-link.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+html.light .navbar-link.active::after {
+  background: var(--primary);
+  box-shadow: 0 0 8px rgba(7, 127, 214, 0.45);
 }
 
 html.light .mobile-toggle-btn {

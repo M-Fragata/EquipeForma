@@ -43,9 +43,12 @@ export const Footer: React.FC = () => {
       <div className="container">
         <div ref={bannerRef} className="conversion-banner gsap-card opacity-0">
           <div className="banner-text">
-            <div className="flex items-center gap-2 mb-2">
-              <img src={logoUrl} alt="Logo" className="banner-logo" />
-              <span className="banner-brand">Equipe Forma Academia</span>
+            <div className="banner-brand-header">
+              <img src={logoUrl} alt="Forma Fitness" className="banner-logo" />
+              <div className="banner-brand-group">
+                <span className="banner-brand-forma">Forma</span>
+                <span className="banner-brand-fitness">Fitness</span>
+              </div>
             </div>
             <AnimatedText
               as="h3"
@@ -78,8 +81,11 @@ export const Footer: React.FC = () => {
           {/* Column 1: Brand */}
           <div className="footer-col">
             <div className="footer-brand-header">
-              <img src={logoUrl} alt="Equipe Forma" className="footer-logo" />
-              <span className="footer-brand-title">Equipe Forma</span>
+              <img src={logoUrl} alt="Forma Fitness" className="footer-logo" />
+              <div className="footer-brand-group">
+                <span className="footer-brand-forma">Forma</span>
+                <span className="footer-brand-fitness">Fitness</span>
+              </div>
             </div>
             <p className="footer-brand-desc">
               Centro de treinamento de alta performance, saúde integrada e musculação com metodologia comprovada para o seu resultado.
@@ -142,11 +148,11 @@ export const Footer: React.FC = () => {
 
             <div className="social-links">
               <a
-                href="https://www.instagram.com/equipeformaacademia/"
+                href="https://www.instagram.com/formafitnessmarica/?hl=pt"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
-                aria-label="Instagram da Equipe Forma"
+                aria-label="Instagram da Academia Forma e Fitness"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect width="20" height="20" x="2" y="2" rx="5" ry="5"/>
@@ -155,11 +161,11 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/equipeforma"
+                href="https://www.facebook.com/formaefitnessmarica/?locale=pt_BR"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
-                aria-label="Facebook da Equipe Forma"
+                aria-label="Facebook da Academia Forma e Fitness"
               >
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
@@ -170,7 +176,7 @@ export const Footer: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
-                aria-label="WhatsApp da Equipe Forma"
+                aria-label="WhatsApp da Academia Forma e Fitness"
               >
                 <MessageCircle size={18} />
               </a>
@@ -180,7 +186,7 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="container footer-bottom">
-          <p>© {new Date().getFullYear()} Equipe Forma Academia. Todos os direitos reservados.</p>
+          <p>© {new Date().getFullYear()} Academia Forma e Fitness. Todos os direitos reservados.</p>
           <div className="footer-legal">
             <span>Musculação de Alta Performance & Jiu-Jitsu</span>
           </div>

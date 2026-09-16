@@ -60,7 +60,7 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     if (!headerRef.current) return;
-    
+
     // Set initial hidden state so it waits for Hero
     gsap.set(headerRef.current, { y: -90, opacity: 0 });
 
@@ -115,8 +115,11 @@ export const Navbar: React.FC = () => {
     <header ref={headerRef} className={`navbar-header opacity-0 ${scrolled ? 'scrolled' : ''}`}>
       <div className="container navbar-container">
         <a href="#inicio" className="navbar-brand">
-          <img src={logoUrl} alt="Equipe Forma Academia" className="navbar-logo" />
-          <span className="navbar-title">Equipe Forma</span>
+          <img src={logoUrl} alt="Academia Forma Fitness" className="navbar-logo" />
+          <div className="navbar-title-group">
+            <span className="navbar-title-forma">Forma</span>
+            <span className="navbar-title-fitness">Fitness</span>
+          </div>
         </a>
 
         <nav ref={navRef} className={`navbar-nav ${mobileMenuOpen ? 'open' : ''}`}>

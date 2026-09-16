@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Dumbbell, MessageCircle, ShieldCheck } from 'lucide-react';
+import { Dumbbell, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { AnimatedText } from './AnimatedText';
 import './Hero.css';
@@ -75,7 +75,7 @@ export const Hero: React.FC = () => {
           stagger={0.06}
           scrollTrigger={false}
         >
-          Equipe Forma Academia
+          Academia Forma e Fitness
         </AnimatedText>
 
         <AnimatedText
