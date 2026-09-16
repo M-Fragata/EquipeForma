@@ -10,14 +10,51 @@ export const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState<string>('');
   const headerRef = useRef<HTMLElement>(null);
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+
+      const sectionIds = ['modalidades', 'horarios', 'planos', 'contatos'];
+      const isBottom =
+        window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 60;
+
+      if (isBottom) {
+        setActiveSection('contatos');
+        return;
+      }
+
+      // If before modalidades (in hero), clear active link
+      const firstSection = document.getElementById('modalidades');
+      if (firstSection) {
+        const firstRect = firstSection.getBoundingClientRect();
+        if (firstRect.top > 200) {
+          setActiveSection('');
+          return;
+        }
+      }
+
+      let current = '';
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 220 && rect.bottom >= 100) {
+            current = id;
+          }
+        }
+      }
+
+      if (current) {
+        setActiveSection(current);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -85,29 +122,41 @@ export const Navbar: React.FC = () => {
         <nav ref={navRef} className={`navbar-nav ${mobileMenuOpen ? 'open' : ''}`}>
           <a
             href="#modalidades"
-            onClick={() => setMobileMenuOpen(false)}
-            className="navbar-link"
+            onClick={() => {
+              setActiveSection('modalidades');
+              setMobileMenuOpen(false);
+            }}
+            className={`navbar-link ${activeSection === 'modalidades' ? 'active' : ''}`}
           >
             Modalidades
           </a>
           <a
             href="#horarios"
-            onClick={() => setMobileMenuOpen(false)}
-            className="navbar-link"
+            onClick={() => {
+              setActiveSection('horarios');
+              setMobileMenuOpen(false);
+            }}
+            className={`navbar-link ${activeSection === 'horarios' ? 'active' : ''}`}
           >
             Horários e Localização
           </a>
           <a
             href="#planos"
-            onClick={() => setMobileMenuOpen(false)}
-            className="navbar-link"
+            onClick={() => {
+              setActiveSection('planos');
+              setMobileMenuOpen(false);
+            }}
+            className={`navbar-link ${activeSection === 'planos' ? 'active' : ''}`}
           >
             Planos
           </a>
           <a
             href="#contatos"
-            onClick={() => setMobileMenuOpen(false)}
-            className="navbar-link"
+            onClick={() => {
+              setActiveSection('contatos');
+              setMobileMenuOpen(false);
+            }}
+            className={`navbar-link ${activeSection === 'contatos' ? 'active' : ''}`}
           >
             Contatos
           </a>
