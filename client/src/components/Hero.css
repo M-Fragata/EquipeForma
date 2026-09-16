@@ -114,16 +114,7 @@
   line-height: 1.15;
   margin-bottom: var(--space-lg);
   letter-spacing: -0.025em;
-  /* Tipografia apenas - o gradiente é controlado pelo <GradientText /> (React Bits)
-     colors=["#077FD6","#E87513","#fcfcfc"] */
-}
-
-/* GradientText inner precisa herdar tipografia do wrapper */
-.hero-subtitle-gradient > div {
-  font-size: inherit;
-  font-weight: inherit;
-  line-height: inherit;
-  letter-spacing: inherit;
+  color: var(--secondary);
 }
 
 .hero-description {

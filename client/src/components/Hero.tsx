@@ -2,13 +2,11 @@ import React, { useRef, useEffect } from 'react';
 import { Dumbbell, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
 import { AnimatedText } from './AnimatedText';
-import GradientText from './GradientText';
 import './Hero.css';
 
 export const Hero: React.FC = () => {
   const badgeRef = useRef<HTMLDivElement>(null);
   const ctaRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -24,19 +22,6 @@ export const Hero: React.FC = () => {
             badgeRef.current?.classList.add('opacity-1');
           },
         });
-      }
-      if (subtitleRef.current) {
-        gsap.fromTo(
-          subtitleRef.current,
-          { y: 28, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.7,
-            delay: 0.32,
-            ease: 'power3.out',
-          }
-        );
       }
       if (ctaRef.current) {
         gsap.to(ctaRef.current, {
@@ -94,20 +79,17 @@ export const Hero: React.FC = () => {
           Equipe Forma Academia
         </AnimatedText>
 
-        {/* GradientText React Bits - config exata da imagem: 8s / vertical / yoyo off */}
-        <div ref={subtitleRef} style={{ opacity: 0 }}>
-          <GradientText
-            colors={['#077FD6', '#E87513', '#fcfcfc']}
-            animationSpeed={3}
-            direction="vertical"
-            yoyo={true}
-            pauseOnHover={false}
-            showBorder={false}
-            className="hero-subtitle-gradient"
-          >
-            Seu treino, sua evolução diária.
-          </GradientText>
-        </div>
+        <AnimatedText
+          as="h2"
+          className="hero-subtitle-gradient"
+          type="words,lines"
+          animation="fade-up"
+          delay={0.3}
+          stagger={0.04}
+          scrollTrigger={false}
+        >
+          Seu treino, sua evolução diária.
+        </AnimatedText>
 
         {/* Paragraph with Split Lines / Words */}
         <AnimatedText
@@ -135,7 +117,7 @@ export const Hero: React.FC = () => {
             rel="noopener noreferrer"
             className="btn-outline hero-btn gsap-btn"
           >
-            <MessageCircle size={20} className="text-tertiary" />
+            <MessageCircle size={20} className="text-secondary" />
             <span>Falar no WhatsApp</span>
           </a>
         </div>
