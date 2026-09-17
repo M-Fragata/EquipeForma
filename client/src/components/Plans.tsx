@@ -17,30 +17,69 @@ export const Plans: React.FC = () => {
       ScrollTrigger.refresh();
     }, 150);
 
-    const ctx = gsap.context(() => {
-      gsap.to('.plan-card', {
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: 'top 88%',
-          toggleActions: 'play none none none',
-        },
-        y: 0,
-        opacity: 1,
-        stagger: 0.12,
-        duration: 0.8,
-        ease: 'power3.out',
-        onComplete: () => {
-          document.querySelectorAll('.plan-card').forEach((el) => {
-            el.classList.remove('opacity-0');
-            el.classList.add('opacity-1');
-          });
-        },
+    const mm = gsap.matchMedia(gridRef);
+
+    // Mobile: cada card de plano anima individualmente ao entrar na tela
+    mm.add('(max-width: 767px)', () => {
+      const cards = gsap.utils.toArray<HTMLElement>('.plan-card');
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          {
+            y: 35,
+            opacity: 0,
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power3.out',
+            onComplete: () => {
+              card.classList.remove('opacity-0');
+              card.classList.add('opacity-1');
+            },
+          }
+        );
       });
-    }, gridRef);
+    });
+
+    // Desktop: cards entram juntos com stagger ao visualizar o grid
+    mm.add('(min-width: 768px)', () => {
+      gsap.fromTo(
+        '.plan-card',
+        {
+          y: 40,
+          opacity: 0,
+        },
+        {
+          scrollTrigger: {
+            trigger: gridRef.current,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          y: 0,
+          opacity: 1,
+          stagger: 0.12,
+          duration: 0.8,
+          ease: 'power3.out',
+          onComplete: () => {
+            document.querySelectorAll('.plan-card').forEach((el) => {
+              el.classList.remove('opacity-0');
+              el.classList.add('opacity-1');
+            });
+          },
+        }
+      );
+    });
 
     return () => {
       clearTimeout(timer);
-      ctx.revert();
+      mm.revert();
     };
   }, []);
 

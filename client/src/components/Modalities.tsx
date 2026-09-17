@@ -12,13 +12,44 @@ export const Modalities: React.FC = () => {
 
   useEffect(() => {
     if (!gridRef.current) return;
-    const isMobile = window.innerWidth < 768;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia(gridRef);
+
+    // Mobile: cada card inicia a animação individualmente ao entrar na tela
+    mm.add('(max-width: 767px)', () => {
+      const cards = gsap.utils.toArray<HTMLElement>('.modality-card');
+      cards.forEach((card) => {
+        gsap.fromTo(
+          card,
+          {
+            y: 35,
+            opacity: 0,
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 88%',
+              toggleActions: 'play none none none',
+            },
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+            ease: 'power3.out',
+            onComplete: () => {
+              card.classList.remove('opacity-0');
+              card.classList.add('opacity-1');
+            },
+          }
+        );
+      });
+    });
+
+    // Desktop: cards entram juntos com stagger ao atingir a seção
+    mm.add('(min-width: 768px)', () => {
       gsap.fromTo(
         '.modality-card',
         {
-          y: isMobile ? 35 : 45,
+          y: 45,
           opacity: 0,
         },
         {
@@ -41,9 +72,9 @@ export const Modalities: React.FC = () => {
           },
         }
       );
-    }, gridRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
   const musculacaoImage =
     'https://lh3.googleusercontent.com/aida-public/AB6AXuC08NrZ04XLCYxC-jyP1B5C_BLxknz0CAIAqgCEfs0QvtDR1ZvFwspyHpVvViIvhCFQITSbGVA3MzhGJHGMMsMYk5tmRyCpcAS4xq-JlOFI_SG_5tJr4Mz3syKuS2CisfyBQ8nM1agKFZXh15IYsZaKxafoSWl_XovSJzyLaygGXnr_ThD9jcgsvCoyku1X9BHSiey_jsprCtCFwHv1bEz-g0Hkanh2828yuwyvsNf6V0ZDUGqyCwFB';

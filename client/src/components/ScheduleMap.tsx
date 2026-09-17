@@ -16,14 +16,66 @@ export const ScheduleMap: React.FC = () => {
 
   useEffect(() => {
     if (!containerRef.current) return;
-    const isMobile = window.innerWidth < 768;
 
-    const ctx = gsap.context(() => {
+    const mm = gsap.matchMedia(containerRef);
+
+    // Mobile: cada card (horários e mapa) anima ao entrar individualmente na tela
+    mm.add('(max-width: 767px)', () => {
       gsap.fromTo(
         '.schedule-card',
         {
-          x: isMobile ? 0 : -40,
-          y: isMobile ? 35 : 0,
+          y: 35,
+          opacity: 0,
+        },
+        {
+          scrollTrigger: {
+            trigger: '.schedule-card',
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: 'power3.out',
+          onComplete: () => {
+            const el = document.querySelector('.schedule-card');
+            el?.classList.remove('opacity-0');
+            el?.classList.add('opacity-1');
+          },
+        }
+      );
+
+      gsap.fromTo(
+        '.map-card',
+        {
+          y: 35,
+          opacity: 0,
+        },
+        {
+          scrollTrigger: {
+            trigger: '.map-card',
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          y: 0,
+          opacity: 1,
+          duration: 0.7,
+          ease: 'power3.out',
+          onComplete: () => {
+            const el = document.querySelector('.map-card');
+            el?.classList.remove('opacity-0');
+            el?.classList.add('opacity-1');
+          },
+        }
+      );
+    });
+
+    // Desktop: cards entram simultaneamente pelos lados
+    mm.add('(min-width: 768px)', () => {
+      gsap.fromTo(
+        '.schedule-card',
+        {
+          x: -40,
           opacity: 0,
         },
         {
@@ -33,7 +85,6 @@ export const ScheduleMap: React.FC = () => {
             toggleActions: 'play none none none',
           },
           x: 0,
-          y: 0,
           opacity: 1,
           duration: 0.8,
           ease: 'power3.out',
@@ -48,8 +99,7 @@ export const ScheduleMap: React.FC = () => {
       gsap.fromTo(
         '.map-card',
         {
-          x: isMobile ? 0 : 40,
-          y: isMobile ? 35 : 0,
+          x: 40,
           opacity: 0,
         },
         {
@@ -59,10 +109,9 @@ export const ScheduleMap: React.FC = () => {
             toggleActions: 'play none none none',
           },
           x: 0,
-          y: 0,
           opacity: 1,
           duration: 0.8,
-          delay: isMobile ? 0.1 : 0.15,
+          delay: 0.15,
           ease: 'power3.out',
           onComplete: () => {
             const el = document.querySelector('.map-card');
@@ -71,9 +120,9 @@ export const ScheduleMap: React.FC = () => {
           },
         }
       );
-    }, containerRef);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
 
   // Google Maps interactive embed coordinates for Equipe Forma Maricá
