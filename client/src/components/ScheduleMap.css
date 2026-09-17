@@ -180,25 +180,32 @@
 }
 
 .map-theme-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
   display: inline-flex;
   align-items: center;
-  gap: 0.35rem;
+  justify-content: center;
   background: var(--bg-surface-high);
-  color: var(--text-muted);
+  color: var(--text-main);
   border: 1px solid var(--border-light);
-  padding: 0.3rem 0.75rem;
-  border-radius: var(--radius-full);
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .map-theme-btn:hover {
-  color: var(--text-main);
-  border-color: var(--primary);
   background: var(--bg-surface-hover);
+  border-color: var(--primary);
+  transform: scale(1.08) rotate(15deg);
+}
+
+.map-theme-btn .theme-icon.sun {
+  color: #f59e0b;
+}
+
+.map-theme-btn .theme-icon.moon {
+  color: #3b82f6;
 }
 
 /* Interactive Embedded Map */
@@ -221,7 +228,7 @@
 }
 
 .map-interactive-iframe.dark-filter {
-  filter: invert(90%) hue-rotate(180deg) contrast(1.15) brightness(0.85);
+  filter: invert(90%) hue-rotate(180deg) contrast(1.15) brightness(0.85) !important;
 }
 
 .map-floating-pin {
@@ -230,29 +237,53 @@
   left: 12px;
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
   z-index: 5;
-  transition: all 0.3s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: inherit;
+  outline: none;
+}
+
+.map-floating-pin:hover {
+  transform: translateY(-1px);
+}
+
+.map-floating-pin:active {
+  transform: translateY(1px);
+}
+
+.map-pin-icon {
+  flex-shrink: 0;
 }
 
 .map-interactive-wrapper.is-light-map .map-floating-pin {
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.96);
   border: 1px solid rgba(0, 112, 201, 0.35);
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+  color: #0070C9;
 }
 
-.map-interactive-wrapper.is-light-map .map-pin-title {
-  color: #0070C9;
+.map-interactive-wrapper.is-light-map .map-floating-pin:hover {
+  background: #ffffff;
+  border-color: #0070C9;
+  box-shadow: 0 6px 20px rgba(0, 112, 201, 0.22);
 }
 
 .map-interactive-wrapper.is-dark-map .map-floating-pin {
   background: rgba(10, 11, 16, 0.92);
   border: 1px solid var(--border-highlight);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  color: var(--primary-light);
 }
 
-.map-interactive-wrapper.is-dark-map .map-pin-title {
-  color: var(--primary-light);
+.map-interactive-wrapper.is-dark-map .map-floating-pin:hover {
+  background: rgba(18, 20, 30, 0.98);
+  border-color: var(--primary);
+  box-shadow: 0 6px 20px rgba(7, 127, 214, 0.3);
 }
 
 .map-pin-title {
@@ -260,6 +291,30 @@
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.02em;
+}
+
+.map-pin-hint {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.12rem 0.45rem;
+  border-radius: var(--radius-full);
+  margin-left: 0.2rem;
+  transition: all 0.2s ease;
+}
+
+.map-interactive-wrapper.is-light-map .map-pin-hint {
+  background: rgba(0, 112, 201, 0.1);
+  color: #0070C9;
+}
+
+.map-interactive-wrapper.is-dark-map .map-pin-hint {
+  background: rgba(7, 127, 214, 0.15);
+  color: var(--primary-light);
+}
+
+.map-floating-pin.recentering .map-pin-hint {
+  background: rgba(16, 185, 129, 0.2) !important;
+  color: #10b981 !important;
 }
 
 .map-card-actions {

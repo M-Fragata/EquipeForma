@@ -25,6 +25,21 @@ export const ScheduleMap: React.FC = () => {
   };
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const [isRecentering, setIsRecentering] = useState(false);
+
+  // Centraliza o mapa diretamente na página ao clicar em "Forma e Fitness"
+  const handleRecenter = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setIsRecentering(true);
+    if (iframeRef.current) {
+      iframeRef.current.src = mapIframeSrc;
+    }
+    setTimeout(() => {
+      setIsRecentering(false);
+    }, 600);
+  };
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -223,7 +238,11 @@ export const ScheduleMap: React.FC = () => {
                     title={mapDark ? 'Alternar para Modo Claro do Mapa' : 'Alternar para Modo Escuro do Mapa'}
                     aria-label="Alternar tema do mapa"
                   >
-                    {mapDark ? <Moon size={14} /> : <Sun size={14} />}
+                    {mapDark ? (
+                      <Moon size={17} className="theme-icon sun" />
+                    ) : (
+                      <Sun size={17} className="theme-icon moon" />
+                    )}
                   </button>
                 </div>
               </div>
@@ -235,15 +254,28 @@ export const ScheduleMap: React.FC = () => {
               {/* Interactive Embedded Map Container */}
               <div className={`map-interactive-wrapper ${mapDark ? 'is-dark-map' : 'is-light-map'}`}>
                 <iframe
+                  ref={iframeRef}
                   title="Mapa Interativo da Academia Forma e Fitness"
                   src={mapIframeSrc}
                   className={`map-interactive-iframe ${mapDark ? 'dark-filter' : ''}`}
                   loading="lazy"
                   allowFullScreen
                 ></iframe>
-                <div className="map-floating-pin">
+                <button
+                  type="button"
+                  onClick={handleRecenter}
+                  className={`map-floating-pin ${isRecentering ? 'recentering' : ''}`}
+                  title="Clique para centralizar o mapa na Academia"
+                  aria-label="Centralizar o mapa na Academia Forma e Fitness"
+                >
+                  <MapPin size={14} className="map-pin-icon" />
                   <span className="map-pin-title">Forma e Fitness</span>
-                </div>
+                  {isRecentering ? (
+                    <span className="map-pin-hint">Centralizado!</span>
+                  ) : (
+                    ''
+                  )}
+                </button>
               </div>
             </div>
 

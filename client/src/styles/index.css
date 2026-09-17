@@ -402,8 +402,4 @@ html.light .footer-main {
   border-top-color: var(--border-light);
 }
 
-html.light .map-interactive-iframe.dark-filter {
-  filter: none;
-}
-
 
