@@ -109,7 +109,7 @@ export const Hero: React.FC = () => {
         <div ref={ctaRef} className="hero-ctas opacity-0">
           <a href="#planos" className="btn-primary hero-btn gsap-btn">
             <Dumbbell size={20} />
-            <span>Conhecer Nossos Planos</span>
+            <span> Conheça Nossos Planos</span>
           </a>
           <a
             href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informações."
