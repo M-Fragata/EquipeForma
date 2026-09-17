@@ -9,6 +9,7 @@ import logo from "../../public/logoforma.png"
 export const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string>('');
   const headerRef = useRef<HTMLElement>(null);
@@ -76,6 +77,7 @@ export const Navbar: React.FC = () => {
         ease: 'power3.out',
         clearProps: 'transform',
         onComplete: () => {
+          setHeaderVisible(true);
           headerRef.current?.classList.remove('opacity-0');
           headerRef.current?.classList.add('opacity-1');
           // Signal that Header animation has finished, now Metrics can animate
@@ -160,7 +162,10 @@ export const Navbar: React.FC = () => {
 
   return (
     <>
-      <header ref={headerRef} className={`navbar-header opacity-0 ${scrolled ? 'scrolled' : ''}`}>
+      <header
+        ref={headerRef}
+        className={`navbar-header ${!headerVisible ? 'opacity-0' : ''} ${scrolled ? 'scrolled' : ''}`}
+      >
         <div className="container navbar-container">
           <a
             href="#inicio"
