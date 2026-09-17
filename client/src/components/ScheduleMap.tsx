@@ -3,15 +3,27 @@ import { Clock, MapPin, Navigation, ShieldCheck, Sun, Moon } from 'lucide-react'
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatedText } from './AnimatedText';
-import { useTheme } from '../hooks/useTheme';
 import './ScheduleMap.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const ScheduleMap: React.FC = () => {
-  const { theme } = useTheme();
-  const [darkMapOverride, setDarkMapOverride] = useState<boolean | null>(null);
-  const darkMap = darkMapOverride ?? theme === 'dark';
+  // Mapa possui controle independente de tema, com MODO CLARO como padrão prioritário
+  const [mapDark, setMapDark] = useState<boolean>(() => {
+    const saved = localStorage.getItem('equipe-forma-map-theme');
+    if (saved === 'dark') return true;
+    if (saved === 'light') return false;
+    return false; // Modo padrão do mapa: CLARO
+  });
+
+  const toggleMapTheme = () => {
+    setMapDark((prev) => {
+      const next = !prev;
+      localStorage.setItem('equipe-forma-map-theme', next ? 'dark' : 'light');
+      return next;
+    });
+  };
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -206,13 +218,13 @@ export const ScheduleMap: React.FC = () => {
                 </div>
                 <div className="map-badge-group">
                   <button
-                    onClick={() => setDarkMapOverride(!darkMap)}
+                    onClick={toggleMapTheme}
                     className="map-theme-btn"
-                    title="Alternar tema do mapa"
+                    title={mapDark ? 'Alternar para Modo Claro do Mapa' : 'Alternar para Modo Escuro do Mapa'}
+                    aria-label="Alternar tema do mapa"
                   >
-                    {darkMap ? <Sun size={14} /> : <Moon size={14} />}
+                    {mapDark ? <Moon size={14} /> : <Sun size={14} />}
                   </button>
-
                 </div>
               </div>
 
@@ -221,16 +233,16 @@ export const ScheduleMap: React.FC = () => {
               </p>
 
               {/* Interactive Embedded Map Container */}
-              <div className="map-interactive-wrapper">
+              <div className={`map-interactive-wrapper ${mapDark ? 'is-dark-map' : 'is-light-map'}`}>
                 <iframe
-                  title="Mapa Interativo da Equipe Forma Academia"
+                  title="Mapa Interativo da Academia Forma e Fitness"
                   src={mapIframeSrc}
-                  className={`map-interactive-iframe ${darkMap ? 'dark-filter' : ''}`}
+                  className={`map-interactive-iframe ${mapDark ? 'dark-filter' : ''}`}
                   loading="lazy"
                   allowFullScreen
                 ></iframe>
                 <div className="map-floating-pin">
-                  <span className="map-pin-title">Equipe Forma Academia</span>
+                  <span className="map-pin-title">Forma e Fitness</span>
                 </div>
               </div>
             </div>

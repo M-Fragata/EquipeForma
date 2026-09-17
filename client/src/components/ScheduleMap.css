@@ -186,12 +186,13 @@
   background: var(--bg-surface-high);
   color: var(--text-muted);
   border: 1px solid var(--border-light);
-  padding: 0.25rem 0.65rem;
+  padding: 0.3rem 0.75rem;
   border-radius: var(--radius-full);
   font-family: var(--font-heading);
   font-size: 0.75rem;
   font-weight: 600;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
 
 .map-theme-btn:hover {
@@ -227,21 +228,37 @@
   position: absolute;
   top: 12px;
   left: 12px;
-  background: rgba(10, 11, 16, 0.9);
-  backdrop-filter: blur(10px);
-  border: 1px solid var(--border-highlight);
   padding: 0.35rem 0.85rem;
   border-radius: var(--radius-full);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
   pointer-events: none;
   z-index: 5;
+  transition: all 0.3s ease;
+}
+
+.map-interactive-wrapper.is-light-map .map-floating-pin {
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 112, 201, 0.35);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.15);
+}
+
+.map-interactive-wrapper.is-light-map .map-pin-title {
+  color: #0070C9;
+}
+
+.map-interactive-wrapper.is-dark-map .map-floating-pin {
+  background: rgba(10, 11, 16, 0.92);
+  border: 1px solid var(--border-highlight);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.map-interactive-wrapper.is-dark-map .map-pin-title {
+  color: var(--primary-light);
 }
 
 .map-pin-title {
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 700;
-  color: var(--primary-light);
   letter-spacing: 0.02em;
 }
 
@@ -327,16 +344,6 @@ html.light .map-theme-btn {
 html.light .map-theme-btn:hover {
   background: #e2e8f0;
   color: #0f172a;
-}
-
-html.light .map-floating-pin {
-  background: rgba(255, 255, 255, 0.94);
-  border-color: rgba(0, 112, 201, 0.35);
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.1);
-}
-
-html.light .map-pin-title {
-  color: #0070C9;
 }
 
 html.light .city-title {

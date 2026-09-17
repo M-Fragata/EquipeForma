@@ -186,9 +186,9 @@ export const Navbar: React.FC = () => {
             aria-label={theme === 'light' ? 'Mudar para Modo Escuro' : 'Mudar para Modo Claro'}
           >
             {theme === 'light' ? (
-              <Moon size={19} className="theme-icon moon" />
+              <Sun size={19} className="theme-icon moon" />
             ) : (
-              <Sun size={19} className="theme-icon sun" />
+              <Moon size={19} className="theme-icon sun" />
             )}
           </button>
 
