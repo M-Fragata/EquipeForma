@@ -74,6 +74,7 @@ export const Navbar: React.FC = () => {
         opacity: 1,
         duration: 0.65,
         ease: 'power3.out',
+        clearProps: 'transform',
         onComplete: () => {
           headerRef.current?.classList.remove('opacity-0');
           headerRef.current?.classList.add('opacity-1');
@@ -109,109 +110,169 @@ export const Navbar: React.FC = () => {
     };
   }, []);
 
+  // Lock body scroll and handle click outside & escape key when mobile menu is open
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    const handleResize = () => {
+      if (window.innerWidth > 900) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      const target = e.target as Node;
+      if (
+        navRef.current &&
+        !navRef.current.contains(target) &&
+        !headerRef.current?.querySelector('.mobile-toggle-btn')?.contains(target)
+      ) {
+        setMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('resize', handleResize);
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+
+    return () => {
+      document.body.style.overflow = '';
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [mobileMenuOpen]);
+
   const logoUrl = logo;
 
   return (
-    <header ref={headerRef} className={`navbar-header opacity-0 ${scrolled ? 'scrolled' : ''}`}>
-      <div className="container navbar-container">
-        <a href="#inicio" className="navbar-brand">
-          <img src={logoUrl} alt="Academia Forma Fitness" className="navbar-logo" />
-          <div className="navbar-title-group">
-            <span className="navbar-title-forma">Forma</span>
-            <span className="navbar-title-fitness">Fitness</span>
-          </div>
-        </a>
+    <>
+      <header ref={headerRef} className={`navbar-header opacity-0 ${scrolled ? 'scrolled' : ''}`}>
+        <div className="container navbar-container">
+          <a
+            href="#inicio"
+            className="navbar-brand"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <img src={logoUrl} alt="Academia Forma Fitness" className="navbar-logo" />
+            <div className="navbar-title-group">
+              <span className="navbar-title-forma">Forma</span>
+              <span className="navbar-title-fitness">Fitness</span>
+            </div>
+          </a>
 
-        <nav ref={navRef} className={`navbar-nav ${mobileMenuOpen ? 'open' : ''}`}>
-          <a
-            href="#modalidades"
-            onClick={() => {
-              setActiveSection('modalidades');
-              setMobileMenuOpen(false);
-            }}
-            className={`navbar-link ${activeSection === 'modalidades' ? 'active' : ''}`}
-          >
-            Modalidades
-          </a>
-          <a
-            href="#horarios"
-            onClick={() => {
-              setActiveSection('horarios');
-              setMobileMenuOpen(false);
-            }}
-            className={`navbar-link ${activeSection === 'horarios' ? 'active' : ''}`}
-          >
-            Horários e Localização
-          </a>
-          <a
-            href="#planos"
-            onClick={() => {
-              setActiveSection('planos');
-              setMobileMenuOpen(false);
-            }}
-            className={`navbar-link ${activeSection === 'planos' ? 'active' : ''}`}
-          >
-            Planos
-          </a>
-          <a
-            href="#contatos"
-            onClick={() => {
-              setActiveSection('contatos');
-              setMobileMenuOpen(false);
-            }}
-            className={`navbar-link ${activeSection === 'contatos' ? 'active' : ''}`}
-          >
-            Contatos
-          </a>
-          <div className="mobile-menu-actions">
+          <nav ref={navRef} className={`navbar-nav ${mobileMenuOpen ? 'open' : ''}`}>
+            <a
+              href="#modalidades"
+              onClick={() => {
+                setActiveSection('modalidades');
+                setMobileMenuOpen(false);
+              }}
+              className={`navbar-link ${activeSection === 'modalidades' ? 'active' : ''}`}
+            >
+              Modalidades
+            </a>
+            <a
+              href="#horarios"
+              onClick={() => {
+                setActiveSection('horarios');
+                setMobileMenuOpen(false);
+              }}
+              className={`navbar-link ${activeSection === 'horarios' ? 'active' : ''}`}
+            >
+              Horários e Localização
+            </a>
+            <a
+              href="#planos"
+              onClick={() => {
+                setActiveSection('planos');
+                setMobileMenuOpen(false);
+              }}
+              className={`navbar-link ${activeSection === 'planos' ? 'active' : ''}`}
+            >
+              Planos
+            </a>
+            <a
+              href="#contatos"
+              onClick={() => {
+                setActiveSection('contatos');
+                setMobileMenuOpen(false);
+              }}
+              className={`navbar-link ${activeSection === 'contatos' ? 'active' : ''}`}
+            >
+              Contatos
+            </a>
+            <div className="mobile-menu-actions">
+              <a
+                href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20me%20matricular."
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setMobileMenuOpen(false)}
+                className="btn-secondary mobile-cta gsap-btn"
+              >
+                <Dumbbell size={18} />
+                Matricule-se
+              </a>
+            </div>
+          </nav>
+
+          <div className="navbar-actions">
+            {/* Quick Theme Switcher Button */}
+            <button
+              onClick={toggleTheme}
+              className="navbar-theme-btn"
+              title={theme === 'light' ? 'Mudar para Modo Escuro' : 'Mudar para Modo Claro'}
+              aria-label={theme === 'light' ? 'Mudar para Modo Escuro' : 'Mudar para Modo Claro'}
+            >
+              {theme === 'light' ? (
+                <Sun size={19} className="theme-icon moon" />
+              ) : (
+                <Moon size={19} className="theme-icon sun" />
+              )}
+            </button>
+
             <a
               href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20me%20matricular."
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => setMobileMenuOpen(false)}
-              className="btn-secondary mobile-cta gsap-btn"
+              className="btn-secondary navbar-cta gsap-btn"
             >
               <Dumbbell size={18} />
-              Matricule-se
+              <span>Matricule-se Agora</span>
             </a>
+
+            <button
+              className="mobile-toggle-btn"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              aria-expanded={mobileMenuOpen}
+            >
+              {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
+            </button>
           </div>
-        </nav>
-
-        <div className="navbar-actions">
-          {/* Quick Theme Switcher Button */}
-          <button
-            onClick={toggleTheme}
-            className="navbar-theme-btn"
-            title={theme === 'light' ? 'Mudar para Modo Escuro' : 'Mudar para Modo Claro'}
-            aria-label={theme === 'light' ? 'Mudar para Modo Escuro' : 'Mudar para Modo Claro'}
-          >
-            {theme === 'light' ? (
-              <Sun size={19} className="theme-icon moon" />
-            ) : (
-              <Moon size={19} className="theme-icon sun" />
-            )}
-          </button>
-
-          <a
-            href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20me%20matricular."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-secondary navbar-cta gsap-btn"
-          >
-            <Dumbbell size={18} />
-            <span>Matricule-se Agora</span>
-          </a>
-
-          <button
-            className="mobile-toggle-btn"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Abrir menu"
-          >
-            {mobileMenuOpen ? <X size={26} /> : <Menu size={26} />}
-          </button>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Blurred backdrop when mobile menu is open */}
+      <div
+        className={`navbar-backdrop ${mobileMenuOpen ? 'open' : ''}`}
+        onClick={() => setMobileMenuOpen(false)}
+        aria-hidden="true"
+      />
+    </>
   );
 };
 
