@@ -39,9 +39,11 @@ export const Plans: React.FC = () => {
             opacity: 1,
             duration: 0.7,
             ease: 'power3.out',
+            clearProps: 'transform',
             onComplete: () => {
               card.classList.remove('opacity-0');
               card.classList.add('opacity-1');
+              gsap.set(card, { clearProps: 'transform' });
             },
           }
         );
@@ -67,11 +69,13 @@ export const Plans: React.FC = () => {
           stagger: 0.12,
           duration: 0.8,
           ease: 'power3.out',
+          clearProps: 'transform',
           onComplete: () => {
             document.querySelectorAll('.plan-card').forEach((el) => {
               el.classList.remove('opacity-0');
               el.classList.add('opacity-1');
             });
+            gsap.set('.plan-card', { clearProps: 'transform' });
           },
         }
       );
@@ -156,7 +160,7 @@ export const Plans: React.FC = () => {
             </div>
 
             <a
-              href="https://wa.me/5521975334017?text=Olá!%20Gostaria%20de%20me%20matricular%20no%20Plano%20Musculação."
+              href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20me%20matricular%20no%20Plano%20Musculação."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline plan-cta gsap-btn"
@@ -228,7 +232,7 @@ export const Plans: React.FC = () => {
             </div>
 
             <a
-              href="https://wa.me/5521975334017?text=Olá!%20Quero%20aproveitar%20o%20Combo%20Musculação%20e%20Arte%20Marcial%20(Jiu-Jitsu%20ou%20Muay%20Thai)%20com%20isenção%20de%20matrícula."
+              href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20quero%20aproveitar%20o%20Combo%20Musculação%20e%20Arte%20Marcial%20com%20isenção%20de%20matrícula."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary plan-cta featured-btn gsap-btn"
@@ -288,7 +292,7 @@ export const Plans: React.FC = () => {
             </div>
 
             <a
-              href="https://wa.me/5521975334017?text=Olá!%20Desejo%20me%20matricular%20no%20Plano%20Jiu-Jitsu%20ou%20Muay%20Thai."
+              href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20desejo%20me%20matricular%20no%20Plano%20Jiu-Jitsu%20ou%20Muay%20Thai."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline plan-cta gsap-btn"

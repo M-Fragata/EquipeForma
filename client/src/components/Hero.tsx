@@ -112,7 +112,7 @@ export const Hero: React.FC = () => {
             <span>Conhecer Nossos Planos</span>
           </a>
           <a
-            href="https://wa.me/5521975334017?text=Olá!%20Vim%20pelo%20site%20da%20Equipe%20Forma%20e%20gostaria%20de%20mais%20informações."
+            href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20mais%20informações."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-outline hero-btn gsap-btn"

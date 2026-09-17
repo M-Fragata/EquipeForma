@@ -165,7 +165,9 @@ export const Navbar: React.FC = () => {
           </a>
           <div className="mobile-menu-actions">
             <a
-              href="#planos"
+              href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20me%20matricular."
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => setMobileMenuOpen(false)}
               className="btn-secondary mobile-cta gsap-btn"
             >
@@ -190,7 +192,12 @@ export const Navbar: React.FC = () => {
             )}
           </button>
 
-          <a href="#planos" className="btn-secondary navbar-cta gsap-btn">
+          <a
+            href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20me%20matricular."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-secondary navbar-cta gsap-btn"
+          >
             <Dumbbell size={18} />
             <span>Matricule-se Agora</span>
           </a>
