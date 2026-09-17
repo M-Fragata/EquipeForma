@@ -76,7 +76,7 @@ export const Hero: React.FC = () => {
           stagger={0.06}
           scrollTrigger={false}
         >
-          Academia Forma e Fitness
+          Academia Forma Fitness
         </AnimatedText>
 
         <AnimatedText

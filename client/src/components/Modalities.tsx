@@ -204,7 +204,7 @@ export const Modalities: React.FC = () => {
             <div className="modality-image-container">
               <img
                 src="/jjalunos.jpg"
-                alt="Treinamento de Jiu-Jitsu na academia forma e fitness"
+                alt="Treinamento de Jiu-Jitsu na academia forma fitness"
                 className="modality-img"
               />
               <div className="image-overlay"></div>
@@ -256,7 +256,7 @@ export const Modalities: React.FC = () => {
             <div className="modality-image-container">
               <img
                 src="/mtalunos.jpg"
-                alt="Treinamento de Muay Thai na Academia Forma e Fitness"
+                alt="Treinamento de Muay Thai na Academia Forma Fitness"
                 className="modality-img"
               />
               <div className="image-overlay"></div>

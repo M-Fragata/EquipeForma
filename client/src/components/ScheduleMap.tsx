@@ -28,7 +28,7 @@ export const ScheduleMap: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [isRecentering, setIsRecentering] = useState(false);
 
-  // Centraliza o mapa diretamente na página ao clicar em "Forma e Fitness"
+  // Centraliza o mapa diretamente na página ao clicar em "Forma Fitness"
   const handleRecenter = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -255,7 +255,7 @@ export const ScheduleMap: React.FC = () => {
               <div className={`map-interactive-wrapper ${mapDark ? 'is-dark-map' : 'is-light-map'}`}>
                 <iframe
                   ref={iframeRef}
-                  title="Mapa Interativo da Academia Forma e Fitness"
+                  title="Mapa Interativo da Academia Forma Fitness"
                   src={mapIframeSrc}
                   className={`map-interactive-iframe ${mapDark ? 'dark-filter' : ''}`}
                   loading="lazy"
@@ -266,10 +266,10 @@ export const ScheduleMap: React.FC = () => {
                   onClick={handleRecenter}
                   className={`map-floating-pin ${isRecentering ? 'recentering' : ''}`}
                   title="Clique para centralizar o mapa na Academia"
-                  aria-label="Centralizar o mapa na Academia Forma e Fitness"
+                  aria-label="Centralizar o mapa na Academia Forma Fitness"
                 >
                   <MapPin size={14} className="map-pin-icon" />
-                  <span className="map-pin-title">Forma e Fitness</span>
+                  <span className="map-pin-title">Forma Fitness</span>
                   {isRecentering ? (
                     <span className="map-pin-hint">Centralizado!</span>
                   ) : (

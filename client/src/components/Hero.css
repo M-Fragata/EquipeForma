@@ -8,9 +8,12 @@
   justify-content: center;
   overflow: hidden;
   background-color: var(--bg-core);
-  background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrFuBaTDQkaOHXs7oZyDqtCYc0YZ34rmBU3Ifc_Xuatf8ZG_UYqswOQeeRkvbbXRI9HzfAcBiNI1hKWCRu-kEmQsOBAPdgzt9d25i0oZpvPdF2C7MVrtQI7vGoNukSOYmeo4-Ut17-uIPw6M4A139OPYj9R46Ki3GnGMPauu-kozKAKTHIqhjhkaCLMtF2bW4Esp7_iz_GQ_2CvSirH8CviWSWPmPeLSD9RLB1b_nXTVoft8aC3Lxb');
+  /* Imagem anterior para rollback: */
+  /* background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBrFuBaTDQkaOHXs7oZyDqtCYc0YZ34rmBU3Ifc_Xuatf8ZG_UYqswOQeeRkvbbXRI9HzfAcBiNI1hKWCRu-kEmQsOBAPdgzt9d25i0oZpvPdF2C7MVrtQI7vGoNukSOYmeo4-Ut17-uIPw6M4A139OPYj9R46Ki3GnGMPauu-kozKAKTHIqhjhkaCLMtF2bW4Esp7_iz_GQ_2CvSirH8CviWSWPmPeLSD9RLB1b_nXTVoft8aC3Lxb'); */
+  background-image: url('/heroformafitness.png');
   background-size: cover;
-  background-position: center;
+  /* Desloca a imagem para baixo compensando a altura do header fixo */
+  background-position: center calc(50% + var(--header-height)/ 2);
 }
 
 .hero-bg-overlay {
