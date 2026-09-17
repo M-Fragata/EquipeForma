@@ -64,7 +64,7 @@ export const Footer: React.FC = () => {
           </div>
 
           <a
-            href="https://wa.me/5521975334017?text=Olá!%20Gostaria%20de%20agendar%20uma%20aula%20experimental%20grátis%20na%20Equipe%20Forma."
+            href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20agendar%20uma%20aula%20experimental%20grátis."
             target="_blank"
             rel="noopener noreferrer"
             className="btn-secondary banner-cta gsap-btn"
