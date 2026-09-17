@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
             <h4 className="footer-col-title">Contato & Redes</h4>
             <div className="footer-contact-list">
               <a
-                href="https://wa.me/5521975334017"
+                href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20falar%20com%20a%20equipe."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-item"
@@ -174,7 +174,7 @@ export const Footer: React.FC = () => {
                 </svg>
               </a>
               <a
-                href="https://wa.me/5521975334017"
+                href="https://wa.me/5521975334017?text=Olá!%20Vim%20do%20site%20e%20gostaria%20de%20falar%20com%20a%20equipe."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
