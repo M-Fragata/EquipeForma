@@ -190,7 +190,7 @@ export const Footer: React.FC = () => {
         <div className="container footer-bottom">
           <p>© {new Date().getFullYear()} Academia Forma e Fitness. Todos os direitos reservados.</p>
           <div className="footer-legal">
-            <span>Musculação de Alta Performance & Jiu-Jitsu</span>
+            <span>Musculação, Jiu-Jitsu & Muay Thai</span>
           </div>
         </div>
       </div>
