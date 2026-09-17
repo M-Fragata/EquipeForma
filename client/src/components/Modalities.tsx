@@ -203,7 +203,7 @@ export const Modalities: React.FC = () => {
 
             <div className="modality-image-container">
               <img
-                src="../../public/jjalunos.jpg"
+                src="/jjalunos.jpg"
                 alt="Treinamento de Jiu-Jitsu na academia forma e fitness"
                 className="modality-img"
               />
@@ -255,7 +255,7 @@ export const Modalities: React.FC = () => {
 
             <div className="modality-image-container">
               <img
-                src="../../public/mtalunos.jpg"
+                src="/mtalunos.jpg"
                 alt="Treinamento de Muay Thai na Academia Forma e Fitness"
                 className="modality-img"
               />
