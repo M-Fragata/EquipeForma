@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Dumbbell, Swords, Check, Star } from 'lucide-react';
+import { Dumbbell, Swords, Flame, Check, Star } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatedText } from './AnimatedText';
@@ -136,13 +136,16 @@ export const Plans: React.FC = () => {
             <div>
               <div className="plan-card-header">
                 <span className="badge badge-secondary">Experiência Completa</span>
-                <Swords size={22} className="text-secondary" />
-                <Dumbbell size={22} className="text-secondary" />
+                <div className="plan-icons-group">
+                  <Dumbbell size={20} className="text-secondary" />
+                  <Swords size={20} className="text-secondary" />
+                  <Flame size={20} className="text-secondary" />
+                </div>
               </div>
 
-              <h3 className="plan-name">Combo Musculação + Jiu-Jitsu</h3>
+              <h3 className="plan-name">Combo Musculação + Arte Marcial</h3>
               <p className="plan-summary">
-                Treinamento híbrido absoluto: potência muscular combinada com a técnica e disciplina do tatame.
+                Treinamento híbrido absoluto: potência muscular combinada com a técnica do Jiu-Jitsu ou a intensidade do Muay Thai.
               </p>
 
               <div className="plan-pricing">
@@ -156,25 +159,25 @@ export const Plans: React.FC = () => {
                   <div className="check-bullet orange">
                     <Check size={14} />
                   </div>
-                  <strong className="text-white">Acesso total musculação + tatame ilimitado</strong>
+                  <strong className="text-white">Acesso total à musculação + luta à sua escolha</strong>
                 </li>
                 <li>
                   <div className="check-bullet orange">
                     <Check size={14} />
                   </div>
-                  <span>Aulas de Jiu-Jitsu em todas as graduações</span>
+                  <span>Turmas de Jiu-Jitsu (todas as faixas) ou Muay Thai</span>
                 </li>
                 <li>
                   <div className="check-bullet orange">
                     <Check size={14} />
                   </div>
-                  <span>Preparação física funcional para lutas</span>
+                  <span>Preparação física funcional e condicionamento</span>
                 </li>
                 <li>
                   <div className="check-bullet orange">
                     <Check size={14} />
                   </div>
-                  <span>Treinos livres aos sábados (Open Mat)</span>
+                  <span>Treinos dinâmicos com professores graduados</span>
                 </li>
                 <li className="benefit-highlight">
                   <div className="check-bullet green">
@@ -186,7 +189,7 @@ export const Plans: React.FC = () => {
             </div>
 
             <a
-              href="https://wa.me/5521975334017?text=Olá!%20Quero%20aproveitar%20o%20Combo%20Musculação%20e%20Jiu-Jitsu%20com%20isenção%20de%20matrícula."
+              href="https://wa.me/5521975334017?text=Olá!%20Quero%20aproveitar%20o%20Combo%20Musculação%20e%20Arte%20Marcial%20(Jiu-Jitsu%20ou%20Muay%20Thai)%20com%20isenção%20de%20matrícula."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-secondary plan-cta featured-btn gsap-btn"
@@ -195,17 +198,20 @@ export const Plans: React.FC = () => {
             </a>
           </div>
 
-          {/* Plano Jiu-Jitsu */}
+          {/* Plano Jiu-Jitsu ou Muay Thai */}
           <div className="plan-card gsap-card opacity-0">
             <div>
               <div className="plan-card-header">
-                <span className="badge badge-primary">Arte Suave</span>
-                <Swords size={22} className="text-muted" />
+                <span className="badge badge-primary">Arte Marcial</span>
+                <div className="plan-icons-group">
+                  <Swords size={20} className="text-muted" />
+                  <Flame size={20} className="text-muted" />
+                </div>
               </div>
 
-              <h3 className="plan-name">Plano Jiu-Jitsu</h3>
+              <h3 className="plan-name">Plano Jiu-Jitsu ou Muay Thai</h3>
               <p className="plan-summary">
-                Foco estrito nas artes marciais, com evolução técnica, autodefesa e formação marcial.
+                Foco estrito nas artes marciais, com evolução técnica, autodefesa e alto condicionamento na modalidade escolhida.
               </p>
 
               <div className="plan-pricing">
@@ -219,31 +225,31 @@ export const Plans: React.FC = () => {
                   <div className="check-bullet blue">
                     <Check size={14} />
                   </div>
-                  <span>Acesso a todas as turmas de Jiu-Jitsu</span>
+                  <span>Acesso à modalidade escolhida (Jiu-Jitsu ou Muay Thai)</span>
                 </li>
                 <li>
                   <div className="check-bullet blue">
                     <Check size={14} />
                   </div>
-                  <span>Graduação oficial reconhecida</span>
+                  <span>Metodologia estruturada do iniciante ao avançado</span>
                 </li>
                 <li>
                   <div className="check-bullet blue">
                     <Check size={14} />
                   </div>
-                  <span>Turmas iniciantes, intermediárias e avançadas</span>
+                  <span>Turmas técnicas, funcionais e preparação marcial</span>
                 </li>
                 <li>
                   <div className="check-bullet blue">
                     <Check size={14} />
                   </div>
-                  <span>Suporte de mestres qualificados</span>
+                  <span>Instrução com mestres e treinadores qualificados</span>
                 </li>
               </ul>
             </div>
 
             <a
-              href="https://wa.me/5521975334017?text=Olá!%20Desejo%20me%20matricular%20no%20Plano%20Jiu-Jitsu."
+              href="https://wa.me/5521975334017?text=Olá!%20Desejo%20me%20matricular%20no%20Plano%20Jiu-Jitsu%20ou%20Muay%20Thai."
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline plan-cta gsap-btn"

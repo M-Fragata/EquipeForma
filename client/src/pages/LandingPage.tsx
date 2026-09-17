@@ -3,7 +3,7 @@ import { Navbar } from '../components/Navbar';
 import { Hero } from '../components/Hero';
 import { Metrics } from '../components/Metrics';
 import { Modalities } from '../components/Modalities';
-import { Corporate } from '../components/Corporate';
+//import { Corporate } from '../components/Corporate';
 import { ScheduleMap } from '../components/ScheduleMap';
 import { Plans } from '../components/Plans';
 import { Footer } from '../components/Footer';
@@ -17,7 +17,7 @@ export const LandingPage: React.FC = () => {
         <Hero />
         <Metrics />
         <Modalities />
-        <Corporate />
+        {/*<Corporate />*/}
         <ScheduleMap />
         <Plans />
       </main>

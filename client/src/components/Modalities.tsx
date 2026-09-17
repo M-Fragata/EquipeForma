@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { Dumbbell, Swords, CheckCircle2 } from 'lucide-react';
+import { Dumbbell, Swords, Flame, CheckCircle2 } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { AnimatedText } from './AnimatedText';
@@ -16,10 +16,9 @@ export const Modalities: React.FC = () => {
 
     const ctx = gsap.context(() => {
       gsap.fromTo(
-        '.card-musculacao',
+        '.modality-card',
         {
-          x: isMobile ? 0 : -45,
-          y: isMobile ? 35 : 0,
+          y: isMobile ? 35 : 45,
           opacity: 0,
         },
         {
@@ -28,42 +27,17 @@ export const Modalities: React.FC = () => {
             start: 'top 85%',
             toggleActions: 'play none none none',
           },
-          x: 0,
           y: 0,
           opacity: 1,
           duration: 0.8,
+          stagger: 0.15,
           ease: 'power3.out',
           onComplete: () => {
-            const el = document.querySelector('.card-musculacao');
-            el?.classList.remove('opacity-0');
-            el?.classList.add('opacity-1');
-          },
-        }
-      );
-
-      gsap.fromTo(
-        '.card-jiujitsu',
-        {
-          x: isMobile ? 0 : 45,
-          y: isMobile ? 35 : 0,
-          opacity: 0,
-        },
-        {
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: 'top 85%',
-            toggleActions: 'play none none none',
-          },
-          x: 0,
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          delay: isMobile ? 0.1 : 0.15,
-          ease: 'power3.out',
-          onComplete: () => {
-            const el = document.querySelector('.card-jiujitsu');
-            el?.classList.remove('opacity-0');
-            el?.classList.add('opacity-1');
+            const cards = document.querySelectorAll('.modality-card');
+            cards.forEach((el) => {
+              el.classList.remove('opacity-0');
+              el.classList.add('opacity-1');
+            });
           },
         }
       );
@@ -73,9 +47,6 @@ export const Modalities: React.FC = () => {
   }, []);
   const musculacaoImage =
     'https://lh3.googleusercontent.com/aida-public/AB6AXuC08NrZ04XLCYxC-jyP1B5C_BLxknz0CAIAqgCEfs0QvtDR1ZvFwspyHpVvViIvhCFQITSbGVA3MzhGJHGMMsMYk5tmRyCpcAS4xq-JlOFI_SG_5tJr4Mz3syKuS2CisfyBQ8nM1agKFZXh15IYsZaKxafoSWl_XovSJzyLaygGXnr_ThD9jcgsvCoyku1X9BHSiey_jsprCtCFwHv1bEz-g0Hkanh2828yuwyvsNf6V0ZDUGqyCwFB';
-
-  const jiuJitsuImage =
-    'https://lh3.googleusercontent.com/aida-public/AB6AXuDcDycO845O0AzXDW3N7p9QrBWgnWwBTxQiOaNBNelzJG6L8lZ3ARLlhjiIdnwGAdnr3TMakfYkfhPKGj_kiAuGb07dzov3Kngwm-PxjARjeJjyQNPE63m0UW06HDea9TYYvRrfKgYAYiHu-NV21eAx1SzQqSDMI3gkkymSkLCtThmCot5PGq8DXwubh5dVusLY4XygoNcmfgOkzSO5XcgIUMHb_prx3nEoDV_aRZ4aV8W_ejqi6t_N';
 
   return (
     <section id="modalidades" className="modalities-section">
@@ -89,7 +60,9 @@ export const Modalities: React.FC = () => {
               type="words,lines"
               animation="fade-up"
             >
-              Musculação e Jiu-Jitsu projetados para o seu resultado
+              <span className="highlight-primary">Musculação, Jiu-Jitsu e Muay Thai</span>
+              <br />
+              projetados para o seu resultado
             </AnimatedText>
           </div>
           <AnimatedText
@@ -98,7 +71,7 @@ export const Modalities: React.FC = () => {
             type="words,lines"
             animation="stagger-blur"
           >
-            Ambiente climatizado, zoneamento estratégico para pesos livres, aparelhos calibrados e tatame de densidade profissional homologado.
+            Ambiente climatizado, aparelhos biomecânicos modernos, tatame de alta densidade e área dedicada para striking e artes marciais.
           </AnimatedText>
         </div>
 
@@ -174,7 +147,7 @@ export const Modalities: React.FC = () => {
               </div>
 
               <p className="modality-text">
-                Metodologia estruturada com treinos técnicos para todos os níveis — do iniciante ao atleta de competição. Disciplina marcial, defesa pessoal apurada e evolução contínua sob instrução de mestres graduados.
+                Metodologia estruturada com treinos técnicos para todos os níveis, do iniciante ao atleta de competição. Disciplina marcial, defesa pessoal apurada e evolução contínua sob instrução de mestres graduados.
               </p>
 
               <ul className="modality-features">
@@ -199,8 +172,60 @@ export const Modalities: React.FC = () => {
 
             <div className="modality-image-container">
               <img
-                src={jiuJitsuImage}
-                alt="Treinamento de Jiu-Jitsu na Equipe Forma"
+                src="../../public/jjalunos.jpg"
+                alt="Treinamento de Jiu-Jitsu na academia forma e fitness"
+                className="modality-img"
+              />
+              <div className="image-overlay"></div>
+            </div>
+          </div>
+
+          {/* Card Muay Thai */}
+          <div className="modality-card card-muaythai gsap-card opacity-0">
+            <div className="modality-glow red"></div>
+            <div className="modality-content">
+              <div className="modality-header">
+                <div className="modality-icon-box red">
+                  <Flame size={28} />
+                </div>
+                <AnimatedText
+                  as="h3"
+                  className="modality-name"
+                  type="words,lines"
+                  animation="fade-up"
+                >
+                  Muay Thai
+                </AnimatedText>
+              </div>
+
+              <p className="modality-text">
+                A arte das oito armas: dinâmica intensa combinando socos, chutes, joelhadas e cotoveladas. Treinamento de alta intensidade para condicionamento cardiorrespiratório, queima calórica acelerada, agilidade e defesa pessoal para todos os níveis.
+              </p>
+
+              <ul className="modality-features">
+                <li>
+                  <CheckCircle2 size={18} className="feature-icon red" />
+                  <span>Striking Completo (Socos, Chutes e Joelhos)</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={18} className="feature-icon red" />
+                  <span>Alto Gasto Calórico e Definição</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={18} className="feature-icon red" />
+                  <span>Turmas Mistas, Femininas e Iniciantes</span>
+                </li>
+                <li>
+                  <CheckCircle2 size={18} className="feature-icon red" />
+                  <span>Instrução Técnica Especializada</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="modality-image-container">
+              <img
+                src="../../public/mtalunos.jpg"
+                alt="Treinamento de Muay Thai na Academia Forma e Fitness"
                 className="modality-img"
               />
               <div className="image-overlay"></div>

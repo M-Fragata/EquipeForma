@@ -125,6 +125,12 @@
   margin-bottom: var(--space-md);
 }
 
+.plan-icons-group {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
 .plan-name {
   font-size: 1.5rem;
   font-weight: 700;
@@ -138,6 +144,18 @@
   line-height: 1.5;
   margin-bottom: var(--space-lg);
   min-height: 44px;
+}
+
+@media (min-width: 992px) {
+  .plan-name {
+    min-height: 3.8rem;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .plan-summary {
+    min-height: 52px;
+  }
 }
 
 .plan-pricing {

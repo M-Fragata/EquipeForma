@@ -61,7 +61,7 @@ export const Hero: React.FC = () => {
         {/* Gympass badge */}
         <div ref={badgeRef} className="hero-badge-wrapper opacity-0">
           <div className="badge badge-secondary hero-badge">
-            <span>ACEITAMOS GYMPASS E TOTALPASS</span>
+            {/*<span>ACEITAMOS GYMPASS E TOTALPASS</span>*/}
           </div>
         </div>
 
@@ -101,7 +101,7 @@ export const Hero: React.FC = () => {
           stagger={0.02}
           scrollTrigger={false}
         >
-          A união perfeita entre Musculação completa de alta performance e Jiu-Jitsu técnico de alto nível em um único centro de excelência em Maricá.
+          A união perfeita entre Musculação de alta performance, Jiu-Jitsu técnico e Muay Thai dinâmico em um único centro de excelência em Maricá.
         </AnimatedText>
 
         {/* CTA Buttons */}
