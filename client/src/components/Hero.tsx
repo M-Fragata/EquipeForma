@@ -58,12 +58,13 @@ export const Hero: React.FC = () => {
       <div className="hero-glow-2"></div>
 
       <div className="container hero-content">
-        {/* Gympass badge */}
+        {/* Gympass badge 
         <div ref={badgeRef} className="hero-badge-wrapper opacity-0">
           <div className="badge badge-secondary hero-badge">
-            {/*<span>ACEITAMOS GYMPASS E TOTALPASS</span>*/}
+            <span>ACEITAMOS GYMPASS E TOTALPASS</span>
           </div>
         </div>
+        */}
 
         {/* Animated H1 Title with SplitText (Lines & Words) */}
         <AnimatedText
